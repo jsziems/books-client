@@ -1,10 +1,16 @@
+import { CardHeaderProps } from '@material-ui/core'
 import React from 'react'
 
-export class Header extends React.Component {
+type HeaderProps = {
+    brand: string
+}
+
+export class Header extends React.Component <HeaderProps, {}>{
     render() {
+        const { brand } = this.props
         return (
             <nav>
-                <h1>Header</h1>
+                <h1>{ brand }</h1>
             </nav>
         )
     }
