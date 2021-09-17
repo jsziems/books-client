@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-color: #24305E;
+  color: #fbfaf5;  /* Soft White */
 }
 
 .App-logo {
