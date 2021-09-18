@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Auth from './auth/Auth'
-import { Header } from './common'
-import { Navbar } from './common'
+// import { Header } from './common'
+import  Sitebar  from './common/Sitebar'
 import { SearchBooks } from './search'
 import { isConstructorDeclaration } from 'typescript';
 
@@ -19,17 +19,20 @@ class App extends Component<{}, AppState> {
     }
   }
 
-  // QUESTION: Why do we use localStorage as well as the state variable token?
   updateToken = (newToken: string) => {
     localStorage.setItem('token', newToken)
     this.setState({ token: newToken })
     console.info(`In udpateToken, token is ${this.state.token}`)
   }
 
+  clearToken = () => {
+    localStorage.clear()
+    this.setState({ token: '' })
+  }
+
   protectedViews = () => {
     console.info('In protectedViews')
     return (
-      // QUESTION - how does this work?
       <Auth updateToken={this.updateToken}/>
     )
 
@@ -38,9 +41,9 @@ class App extends Component<{}, AppState> {
   render() {
     return (
       <div className="App">
-        <Header brand="Developer Digest"/>
+        {/* <Header brand="Developer Digest"/> */}
 
-        <Navbar />
+        <Sitebar clickLogout={this.clearToken} token={this.state.token }/>
         {this.protectedViews()}
       </div>
     );
