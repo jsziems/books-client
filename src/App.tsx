@@ -4,6 +4,7 @@ import './App.css';
 import Auth from './auth/Auth'
 // import { Header } from './common'
 import  Sitebar  from './common/Sitebar'
+import ResourceIndex from './resources/ResourceIndex'
 import { SearchBooks } from './search'
 import { isConstructorDeclaration } from 'typescript';
 
@@ -32,10 +33,9 @@ class App extends Component<{}, AppState> {
 
   protectedViews = () => {
     console.info('In protectedViews')
-    return (
-      <Auth updateToken={this.updateToken}/>
-    )
-
+    return this.state.token === localStorage.getItem('token') 
+      ? (<ResourceIndex token={this.state.token} />)
+      : (<Auth updateToken={this.updateToken}/>)
   }
 
   render() {
