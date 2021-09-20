@@ -1,8 +1,6 @@
-import { CardHeaderProps } from '@material-ui/core'
-import { render } from '@testing-library/react'
+
 import React, { Component } from 'react'
-import { Button, Collapse, Container, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap'
-import { isPropertySignature } from 'typescript'
+import { Button, Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem } from 'reactstrap'
 
 type Props = {
     clickLogout: () => void,
@@ -28,14 +26,20 @@ export default class Sitebar extends Component<Props, SitebarState>{
 
     render() {
         return (
-            <>
-                <Navbar background-color="yellow">
+            <div>
+                <Navbar color="light" light expand="md">
                     <NavbarBrand href="/">Developer Digest</NavbarBrand> 
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
-                    <Nav className="ml-auto" navbar>
-                        <NavItem>
+                    <Nav className="mr-auto" navbar>
+                        {/* <NavItem>
                             <NavLink href="/components/">Components</NavLink>
+                        </NavItem> */}
+                        <NavItem>
+                            <Button>Search</Button>
+                        </NavItem>
+                        <NavItem>
+                            <Button>Add One</Button>
                         </NavItem>
                         <NavItem>
                             <Button onClick={this.props.clickLogout}>Logout</Button>
@@ -43,7 +47,7 @@ export default class Sitebar extends Component<Props, SitebarState>{
                     </Nav>
                     </Collapse>
                 </Navbar>
-            </>
+            </div>
         )
     }
 }
