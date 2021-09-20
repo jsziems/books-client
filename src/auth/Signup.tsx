@@ -68,7 +68,7 @@ export default class Signup extends Component<SignupProps, SignupState> {
         return (
             <div>
                 <h1>Sign Up</h1>
-                {/* MIN LENGTH NOT WORKING */}
+                {/* ToDo MIN LENGTH NOT WORKING */}
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label htmlFor='email'>Email Address</Label>

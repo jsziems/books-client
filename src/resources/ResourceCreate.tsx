@@ -8,6 +8,7 @@ type Props = {
     token: string
 }
 
+// ToDo: Does this need to be exported?  Can I use the type defined in types.tsx?
 export interface ResourceCreateState {
     title: string,
     author: string,
