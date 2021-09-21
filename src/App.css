@@ -6,6 +6,12 @@
 
 .cards-container {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+}
+
+.testing {
+  margin: 1rem 1rem;
+  width: 25%;
 }
 

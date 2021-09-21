@@ -20,10 +20,28 @@ export default class ResourceCards extends Component<Props, {}> {
     render() {
         return (
             <>
-                <div className="cards-container">
-                    <CardGroup >
+                {/* <div className="row">
+                    <div className="col-sm-6">
                         {this.props.resources.map(resource => {
                             return (
+                                <div className="card">
+                                    <div className="card-body">
+                                        <h5 className="card-title">resource.title</h5>
+                                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                        <a href="#" className="btn btn-primary">Go somewhere</a>
+                                    </div>
+                                </div>
+                            )
+                            })}
+                    </div>
+                </div> */}
+
+
+                <div className="cards-container">
+                    {/* <CardGroup > */}
+                        {this.props.resources.map(resource => {
+                            return (
+                                <div className='testing'>
                                 <Card >
                                     <CardImg variant="top" src="holder.js/100px160" />
                                     <CardBody>
@@ -37,10 +55,11 @@ export default class ResourceCards extends Component<Props, {}> {
                                         <small className="text-muted">Last updated 3 mins ago</small>
                                     </CardFooter>
                                 </Card>
+                                </div>
                             )
                         })}
-                    </CardGroup>
-                </div>
+                    {/* </CardGroup> */}
+                </div> 
             </>
         )
     }

@@ -27,7 +27,7 @@ export default class Sitebar extends Component<Props, SitebarState>{
     render() {
         return (
             <div>
-                <Navbar color="light" light expand="md">
+                <Navbar color="light" light expand="md"> 
                     <NavbarBrand href="/">Developer Digest</NavbarBrand> 
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
