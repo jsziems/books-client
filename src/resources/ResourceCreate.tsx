@@ -67,7 +67,7 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
         })
             .then(res => res.json())
             .then(bookData => {
-                console.log(bookData)
+                console.info(bookData)
                 this.setState({
                     title: '',
                     author: '',

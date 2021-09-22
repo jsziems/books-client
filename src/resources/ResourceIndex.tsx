@@ -1,6 +1,8 @@
+import { resourceUsage } from 'process'
 import React, { Component } from 'react'
-import { Col, Container, Row } from 'reactstrap'
+import { Col, Container, Input, Row } from 'reactstrap'
 
+import { Resource } from '../types'
 import ResourceCards from './ResourceCards'
 import ResourceCreate from './ResourceCreate'
 import ResourceEdit from './ResourceEdit'
@@ -11,7 +13,8 @@ type Props = {
 }
 
 interface ResourceIndexState {
-    resources: []
+    resources: Resource[]
+    allResources: Resource[]
     resourceToEdit: object
     updateActive: boolean
 }
@@ -21,6 +24,7 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
         super(props)
         this.state = {
             resources: [],
+            allResources: [],
             resourceToEdit: {},
             updateActive: false
         }
@@ -37,8 +41,9 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
         })
             .then((res) => res.json())
             .then((resourceData) => {
+                this.setState({ allResources: resourceData})
                 this.setState({ resources: resourceData })
-                console.log(resourceData)
+                console.info(resourceData)
             })
             .catch((err) => {
                 console.info(err)
@@ -47,7 +52,7 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
 
     editResource = (resource: object) => {
         this.setState({ resourceToEdit: resource })
-        console.log(resource)
+        console.info(resource)
     }
 
     updateOn = () => {
@@ -64,11 +69,25 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
         this.fetchResources()
     }
 
+    filterCards = (e: React.ChangeEvent<HTMLInputElement>) => {
+        console.info('In ResourceIndex filterCards')
+        const target = e.target
+        const value = target.value.toLowerCase()
+
+        const filteredResources = this.state.allResources.filter
+            (resource => (`${resource.title}`.toLowerCase().includes(value)
+        ))
+        this.setState({ resources: filteredResources })
+    }
+
+
     render() {
         console.info('In ResouceIndex')
         return (
             <Container>
                 <Row>
+                    <Input className='search-box' placeholder="Search..." onChange={this.filterCards} />
+
                     <Col md="3">
                         <ResourceCreate 
                             fetchResources={this.fetchResources} 
