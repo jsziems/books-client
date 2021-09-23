@@ -1,7 +1,6 @@
-import { NavItemProps } from "reactstrap";
 
 
-// ToDo: Also need id?
+
 export interface Resource {
     title: string,
     author: string,
@@ -11,5 +10,5 @@ export interface Resource {
     readStatus: string,
     summary: string,
     rating: string,
-    id?: Number
+    id?: number
 }

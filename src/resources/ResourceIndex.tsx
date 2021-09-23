@@ -1,6 +1,6 @@
-import { resourceUsage } from 'process'
+
 import React, { Component } from 'react'
-import { Col, Container, Input, Row } from 'reactstrap'
+import { Button, Col, Container, Input, Row } from 'reactstrap'
 
 import { Resource } from '../types'
 import ResourceCards from './ResourceCards'
@@ -41,7 +41,7 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
         })
             .then((res) => res.json())
             .then((resourceData) => {
-                this.setState({ allResources: resourceData})
+                this.setState({ allResources: resourceData })
                 this.setState({ resources: resourceData })
                 console.info(resourceData)
             })
@@ -76,18 +76,31 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
 
         const filteredResources = this.state.allResources.filter
             (resource => (`${resource.title}`.toLowerCase().includes(value)
-        ))
+            ))
         this.setState({ resources: filteredResources })
     }
 
+    // addResource = () => {
+    //     <ResourceCreate
+    //         fetchResources={this.fetchResources}
+    //         token={this.props.token}
+    //     />
+    // }
 
     render() {
         console.info('In ResouceIndex')
         return (
             <Container>
+                {/* <div>
                 <Row>
-                    <Input className='search-box' placeholder="Search..." onChange={this.filterCards} />
+                    <Button onClick={() => {this.addResource()}}>
+                        Add a Resource
+                    </Button>
+                </Row>
+                </div> */}
 
+
+                <Row>
                     <Col md="3">
                         <ResourceCreate 
                             fetchResources={this.fetchResources} 
@@ -95,25 +108,30 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
                         />
                     </Col>
                     <Col md='9'>
-                        <ResourceCards
-                            resources={this.state.resources}
-                            editResource={this.editResource}
-                            token={this.props.token}
-                            updateOn={this.updateOn}
-                            fetchResources={this.fetchResources} 
-                        />
-                    </Col>
-                    { this.state.updateActive && this.state.resourceToEdit
-                        ? ( <ResourceEdit
-                                 token={this.props.token}
-                                 resourceToEdit={this.state.resourceToEdit}
-                                 updateOff={this.updateOff}
-                                 fetchResources={this.fetchResources}
+                        <div>
+                            <Input className='search-box' placeholder="Search..." onChange={this.filterCards} />
+
+
+                            <ResourceCards
+                                resources={this.state.resources}
+                                editResource={this.editResource}
+                                token={this.props.token}
+                                updateOn={this.updateOn}
+                                fetchResources={this.fetchResources}
                             />
+                        </div>
+                    </Col>
+                    {this.state.updateActive && this.state.resourceToEdit
+                        ? (<ResourceEdit
+                            token={this.props.token}
+                            resourceToEdit={this.state.resourceToEdit}
+                            updateOff={this.updateOff}
+                            fetchResources={this.fetchResources}
+                        />
                         )
-                        : ( <> </> ) }
+                        : (<> </>)}
                 </Row>
-                
+
             </Container>
         )
     }

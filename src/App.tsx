@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Auth from './auth/Auth'
-// import { Header } from './common'
-import  Sitebar  from './common/Sitebar'
+import Sitebar from './common/Sitebar'
+import Home from './common/Home'
 import ResourceIndex from './resources/ResourceIndex'
-import { SearchBooks } from './search'
-import { isConstructorDeclaration } from 'typescript';
 
 
-// type AppProps = {}
 type AppState = { token: string }
 
 class App extends Component<{}, AppState> {
@@ -31,23 +29,46 @@ class App extends Component<{}, AppState> {
     this.setState({ token: '' })
   }
 
-  protectedViews = () => {
-    console.info('In protectedViews')
-    return this.state.token === localStorage.getItem('token') 
-      ? (<ResourceIndex token={this.state.token} />)
-      : (<Auth updateToken={this.updateToken}/>)
+  componentDidMount() {
+    this.setState({ token: localStorage.getItem("token") || "" })
+    console.info(this.state.token)
+  }
+
+  urlPatterns = () => {
+    return (
+      <Switch>
+        <Route exact path='/'>
+          <Home />
+        </Route>
+        <Route exact path='/auth'>
+          <Auth updateToken={this.updateToken} />
+        </Route>
+        <Route exact path='/resourceIndex'>
+          <ResourceIndex token={this.state.token} />
+        </Route>
+      </Switch>
+    )
   }
 
   render() {
     return (
       <div className="App">
-        {/* <Header brand="Developer Digest"/> */}
-
-        <Sitebar clickLogout={this.clearToken} token={this.state.token }/>
-        {this.protectedViews()}
+        <Router>
+          <Sitebar logout={this.clearToken} token={this.state.token} />
+          {this.urlPatterns()}
+        </Router>
       </div>
     );
   }
 }
 
+/* From Amie 9-23-21 */
+            {/* this.state.loggedIn ?
+            <>
+            <Alert>'You are logged in!'</Alert>
+            <Redirect push to='/'/>
+            </>
+            : <></> */}
+
+            
 export default App;

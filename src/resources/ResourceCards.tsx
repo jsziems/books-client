@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Card, CardBody, CardFooter, CardGroup, CardImg, CardText, CardTitle } from 'reactstrap'
-// import styled from 'styled-components'
+import { Button, Card, CardBody, CardFooter, CardImg, CardText, CardTitle } from 'reactstrap'
 
 import { Resource } from '../types'
 
@@ -35,7 +34,7 @@ export default class ResourceCards extends Component<Props, {}> {
                         return (
                             // ToDo: Change classname
                             <div className='testing'>
-                                <Card >
+                                <Card key={resource.id}>
                                     <CardImg variant="top" src="holder.js/100px160" />
                                     <CardBody>
                                         <CardTitle>{resource.title}</CardTitle>

@@ -1,15 +1,13 @@
-import { totalmem } from 'os'
+
 import React, { Component } from 'react'
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
-import { setSyntheticLeadingComments } from 'typescript'
 
 type Props = {
     fetchResources: () => void
     token: string
 }
 
-// ToDo: Does this need to be exported?  Can I use the type defined in types.tsx?
-export interface ResourceCreateState {
+interface ResourceCreateState {
     title: string,
     author: string,
     link: string,

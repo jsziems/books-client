@@ -19,7 +19,6 @@ export default class Login extends Component<LoginProps, LoginState> {
         }
     }
 
-    // QUESTION: How does React.ChangeEvent work?
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         console.info('In Login:  handleChange')
         const target = event.target;

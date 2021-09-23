@@ -1,9 +1,10 @@
 
 import React, { Component } from 'react'
-import { Button, Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem } from 'reactstrap'
+import { Link } from 'react-router-dom'
+import { Button, Collapse, Nav, Navbar, NavbarBrand, NavLink, NavbarToggler, NavItem } from 'reactstrap'
 
 type Props = {
-    clickLogout: () => void,
+    logout: () => void,
     token: string
 }
 
@@ -27,27 +28,54 @@ export default class Sitebar extends Component<Props, SitebarState>{
     render() {
         return (
             <div>
-                <Navbar color="light" light expand="md"> 
-                    <NavbarBrand href="/">Developer Digest</NavbarBrand> 
+                <Navbar color="light" light expand="md">
+                    <NavbarBrand href="/">Developer Digest</NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
-                        {/* <NavItem>
-                            <NavLink href="/components/">Components</NavLink>
-                        </NavItem> */}
-                        <NavItem>
-                            <Button>Search</Button>
-                        </NavItem>
-                        <NavItem>
-                            <Button>Add One</Button>
-                        </NavItem>
-                        <NavItem>
-                            <Button onClick={this.props.clickLogout}>Logout</Button>
-                        </NavItem>
-                    </Nav>
+                        <Nav className="mr-auto" navbar>
+                            <NavItem>
+                                <NavLink onClick={this.toggle}>
+                                    <Link to='/'>
+                                        Home
+                                    </Link>
+                                </NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink to='auth'>
+                                    <Link to='/Auth'>
+                                        Login
+                                    </Link>
+                                </NavLink>
+                            </NavItem>
+
+                            {this.props.token ? (
+                                <>
+                                    <NavItem>
+                                        <NavLink to='resourceIndex'>
+                                            <Link to='/ResourceIndex'>
+                                                Show Resouces
+                                            </Link>
+                                        </NavLink>
+                                    </NavItem>
+
+                                </>
+                            ) : (
+                                <></>
+                            )}
+
+                            <NavItem>
+                                <NavLink to='resourceIndex'>
+                                    <Link to='/' onClick={this.props.logout}>
+                                        Logout
+                                    </Link>
+                                </NavLink>
+                            </NavItem>
+                        </Nav>
+
                     </Collapse>
                 </Navbar>
             </div>
         )
     }
 }
+
