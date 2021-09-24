@@ -91,15 +91,6 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
         console.info('In ResouceIndex')
         return (
             <Container>
-                {/* <div>
-                <Row>
-                    <Button onClick={() => {this.addResource()}}>
-                        Add a Resource
-                    </Button>
-                </Row>
-                </div> */}
-
-
                 <Row>
                     <Col md="3">
                         <ResourceCreate 

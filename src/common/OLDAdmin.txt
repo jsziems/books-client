@@ -2,20 +2,23 @@ import React, { Component } from 'react'
 import { Button, Col, Container, Row, Table } from 'reactstrap'
 
 import { User } from '../types'
+import UserEdit from '../Admin/UserEdit'
 
 type AdminProps = {
     token: string
 }
 
 type AdminState = {
-    userList: User[]
+    userList: User[],
+    adminUpdateActive: boolean
 }
 
 export default class Admin extends Component<AdminProps, AdminState> {
     constructor(props: AdminProps) {
         super(props)
         this.state = {
-            userList: []
+            userList: [],
+            adminUpdateActive: false
         }
     }
 
@@ -46,8 +49,16 @@ export default class Admin extends Component<AdminProps, AdminState> {
                 'Authorization': `Bearer ${this.props.token}`,
             })
         })
-        .then(() => this.fetchUsers())
+            .then(() => this.fetchUsers())
     }
+
+    // adminUpdateOn = () => {
+    //     this.setState({ adminUpdateActive: true })
+    // }
+
+    // adminUpdateOff = () => {
+    //     this.setState({ adminUpdateActive: false })
+    // }
 
     componentDidMount = () => {
         this.fetchUsers()
@@ -77,20 +88,34 @@ export default class Admin extends Component<AdminProps, AdminState> {
                                     <td>{oneUser.lastName}</td>
                                     <td>{oneUser.createdAt}</td>
                                     <td>
-                                    <Button onClick={() => {
+                                        <Button onClick={() => {
                                             this.deleteUser(oneUser)
                                         }}
                                         >Delete
                                         </Button>
                                     </td>
                                     <td>
-                                    <Input placeholder="Enter new password" onChange={this.resetPassword} />
+                                        <Button onClick={() => {
+                                            <UserEdit
+                                                userToEdit={oneUser}
+                                                token={this.props.token}
+                                                fetchUsers={this.fetchUsers}
+                                                // adminUpdateOff={this.adminUpdateOff}
+                                            />
+
+                                        }}
+                                        >Update
+                                        </Button>
                                     </td>
+
+                                    {/* <td>
+                                    <Input placeholder="Enter new password" onChange={this.resetPassword} />
+                                    </td> */}
                                 </tr>
                             )
                         })}
                     </tbody>
-                </Table> 
+                </Table>
             </>
         )
     }

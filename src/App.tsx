@@ -6,8 +6,7 @@ import Auth from './auth/Auth'
 import Sitebar from './common/Sitebar'
 import Home from './common/Home'
 import ResourceIndex from './resources/ResourceIndex'
-import Admin from './common/Admin'
-
+import UserIndex from './userAdmin/UserIndex'
 
 type AppState = { token: string }
 
@@ -48,7 +47,7 @@ class App extends Component<{}, AppState> {
           <ResourceIndex token={this.state.token} />
         </Route>
         <Route exact path='/admin'>
-          <Admin token={this.state.token} />
+          <UserIndex token={this.state.token} />
         </Route>
       </Switch>
     )
