@@ -8,6 +8,7 @@ type AuthProps = {
     updateToken: (newToken: string) => void
 }
 
+
 export default class Auth extends Component<AuthProps, {}> {
     constructor(props: AuthProps) {
         super(props)
@@ -23,10 +24,16 @@ export default class Auth extends Component<AuthProps, {}> {
                             <Signup updateToken={this.props.updateToken} />
                         </Col>
                         <Col md='6'>
-                            <Login updateToken={this.props.updateToken} />
+                            <Login 
+                                updateToken={this.props.updateToken} 
+                            />
                         </Col>
                     </Row>
                 </Container>
+
+              
+            
+
             </>
         )
     }

@@ -6,6 +6,7 @@ import Auth from './auth/Auth'
 import Sitebar from './common/Sitebar'
 import Home from './common/Home'
 import ResourceIndex from './resources/ResourceIndex'
+import Admin from './common/Admin'
 
 
 type AppState = { token: string }
@@ -14,7 +15,7 @@ class App extends Component<{}, AppState> {
   constructor(props: {}) {
     super(props)
     this.state = {
-      token: '',
+      token: localStorage.getItem("token") || ""
     }
   }
 
@@ -29,10 +30,10 @@ class App extends Component<{}, AppState> {
     this.setState({ token: '' })
   }
 
-  componentDidMount() {
-    this.setState({ token: localStorage.getItem("token") || "" })
-    console.info(this.state.token)
-  }
+  // componentDidMount() {
+  //   this.setState({ token: localStorage.getItem("token") || "" })
+  //   console.info(this.state.token)
+  // }
 
   urlPatterns = () => {
     return (
@@ -45,6 +46,9 @@ class App extends Component<{}, AppState> {
         </Route>
         <Route exact path='/resourceIndex'>
           <ResourceIndex token={this.state.token} />
+        </Route>
+        <Route exact path='/admin'>
+          <Admin token={this.state.token} />
         </Route>
       </Switch>
     )
@@ -62,13 +66,6 @@ class App extends Component<{}, AppState> {
   }
 }
 
-/* From Amie 9-23-21 */
-            {/* this.state.loggedIn ?
-            <>
-            <Alert>'You are logged in!'</Alert>
-            <Redirect push to='/'/>
-            </>
-            : <></> */}
 
             
 export default App;

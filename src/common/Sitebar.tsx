@@ -57,19 +57,28 @@ export default class Sitebar extends Component<Props, SitebarState>{
                                             </Link>
                                         </NavLink>
                                     </NavItem>
+                                    <NavItem>
+                                        <NavLink to='logout'>
+                                            <Link to='/' onClick={this.props.logout}>
+                                                Logout
+                                            </Link>
+                                        </NavLink>
+                                    </NavItem>
+                                    {/* ToDo: Add logic:  if Admin, then show this menu option */}
+                                    <NavItem>
+                                        <NavLink to='admin'>
+                                            <Link to='/Admin' >
+                                                Admin
+                                            </Link>
+                                        </NavLink>
+                                    </NavItem>
 
                                 </>
                             ) : (
                                 <></>
                             )}
 
-                            <NavItem>
-                                <NavLink to='resourceIndex'>
-                                    <Link to='/' onClick={this.props.logout}>
-                                        Logout
-                                    </Link>
-                                </NavLink>
-                            </NavItem>
+
                         </Nav>
 
                     </Collapse>

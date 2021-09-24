@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Redirect } from 'react-router-dom'
 
 type SignupProps = {
     updateToken: (newToken: string) => void
@@ -8,7 +9,8 @@ type SignupState = {
     email: string,
     password: string,
     firstName: string,
-    lastName: string
+    lastName: string,
+    successfulLogin: boolean
 }
 
 export default class Signup extends Component<SignupProps, SignupState> {
@@ -18,7 +20,8 @@ export default class Signup extends Component<SignupProps, SignupState> {
             email: '',
             password: '',
             firstName: '',
-            lastName: ''
+            lastName: '',
+            successfulLogin: false
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -56,6 +59,7 @@ export default class Signup extends Component<SignupProps, SignupState> {
             .then(res => res.json())
             .then(data => {
                 this.props.updateToken(data.sessionToken)
+                this.setState({ successfulLogin: true })
                 console.info(`In Signup handleSubmit, data is ${data.sessionToken}`)
             })
             .catch(err => {
@@ -112,6 +116,11 @@ export default class Signup extends Component<SignupProps, SignupState> {
                     </FormGroup>
                     <Button type='submit'>Sign Up</Button>
                 </Form>
+                { this.state.successfulLogin ?
+                <>
+                    <Redirect push to='/'/>
+                </>
+                : <></>}
             </div>
         )
     }

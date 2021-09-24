@@ -1,0 +1,64 @@
+import React, { Component } from 'react';
+import { Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { User } from '../types'
+
+type Props = {
+    token: string
+    userToEdit: User
+    adminUpdateOff: () => void
+    fetchUsers: () => void
+}
+
+interface UserEditState {
+    firstName: string
+    lastName: string
+    email: string
+}
+
+export default class UserEdit extends Component<Props, UserEditState> {
+    constructor(props: Props) {
+        super(props)
+        this.state = {
+            firstName: this.props.userToEdit.firstName,
+            lastName: this.props.userToEdit.lastName,
+            email: this.props.userToEdit.email
+        }
+    }
+
+    handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const target = e.target
+        const value = target.value
+        const name = target.name
+
+        this.setState( { [name]: value} as unknown as Pick<
+            UserEditState, keyof UserEditState
+            >)
+    }
+
+    handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        fetch(`http://localhost:3000/book/${this.props.userToEdit.id}`, {
+            method: 'PUT',
+            body: JSON.stringify({
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                email: this.state.email
+            }),
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.props.token}`,
+            }),
+        }).then(res => {
+            this.props.fetchUsers()
+            this.props.adminUpdateOff()
+        })
+    }
+
+    render() {
+        return (
+            <>
+            </>
+        )
+    }
+}
+    

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
+import { Redirect } from 'react-router-dom'
 
 type LoginProps = {
     updateToken: (newToken: string) => void
@@ -7,7 +8,8 @@ type LoginProps = {
 
 type LoginState = {
     email: string,
-    password: string
+    password: string,
+    successfulLogin: boolean
 }
 
 export default class Login extends Component<LoginProps, LoginState> {
@@ -15,7 +17,8 @@ export default class Login extends Component<LoginProps, LoginState> {
         super(props)
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            successfulLogin: false
         }
     }
 
@@ -24,7 +27,6 @@ export default class Login extends Component<LoginProps, LoginState> {
         const target = event.target;
         const value = target.value
         const name = target.name
-        // QUESTION:  How does this work?
         this.setState({ [name]: value } as unknown as
             Pick<LoginState, keyof LoginState>)
 
@@ -47,6 +49,7 @@ export default class Login extends Component<LoginProps, LoginState> {
         .then(res => res.json())
         .then(data => {
             this.props.updateToken(data.sessionToken)
+            this.setState({ successfulLogin: true })
             console.info(`In Login handleSubmit, data is ${data.sessionToken}`)
         })
         .catch(err => {
@@ -82,6 +85,11 @@ export default class Login extends Component<LoginProps, LoginState> {
                     </FormGroup>
                     <Button type='submit'>Login</Button>
                 </Form>
+                { this.state.successfulLogin ?
+                <>
+                    <Redirect push to='/'/>
+                </>
+                : <></>}
             </div>
         )
     }

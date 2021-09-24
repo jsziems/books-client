@@ -12,3 +12,14 @@ export interface Resource {
     rating: string,
     id?: number
 }
+
+export interface User {
+    id: number,
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    adminRole: boolean,
+    createdAt: string,
+    updatedAt: string
+}

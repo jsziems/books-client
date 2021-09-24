@@ -30,11 +30,11 @@ export default class ResourceCards extends Component<Props, {}> {
         return (
             <>
                 <div className="cards-container">
-                    {this.props.resources.map(resource => {
+                    {this.props.resources.map((resource, resourceId)  => {
                         return (
                             // ToDo: Change classname
                             <div className='testing'>
-                                <Card key={resource.id}>
+                                <Card key={resourceId}>
                                     <CardImg variant="top" src="holder.js/100px160" />
                                     <CardBody>
                                         <CardTitle>{resource.title}</CardTitle>
