@@ -84,10 +84,10 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
         console.info('In ResourceCreate')
         return (
             <>
-                <h2>Enter Information about your Resource</h2>
-                <Form onSubmit={this.handleSubmit}>
+                <h4>Add a Resource</h4>
+                <Form style={{border: '2px'}} onSubmit={this.handleSubmit}>
                     <FormGroup>
-                        <Label htmlFor='title'>Title</Label>
+                        <Label style={{color: "red"}} htmlFor='title'>Title</Label>
                         <Input
                             name='title'
                             value={this.state.title}

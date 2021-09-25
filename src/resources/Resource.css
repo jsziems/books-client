@@ -1,0 +1,19 @@
+
+.resource-container {
+    margin-top: 3rem;
+}
+
+.resource-form {
+    border: 2px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .card-div {
+    margin: 1rem 1rem;
+    width: 25%;
+  }

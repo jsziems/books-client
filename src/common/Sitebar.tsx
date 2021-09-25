@@ -5,7 +5,8 @@ import { Button, Collapse, Nav, Navbar, NavbarBrand, NavLink, NavbarToggler, Nav
 
 type Props = {
     logout: () => void,
-    token: string
+    token: string,
+    adminRole: string
 }
 
 interface SitebarState {
@@ -65,19 +66,32 @@ export default class Sitebar extends Component<Props, SitebarState>{
                                         </NavLink>
                                     </NavItem>
                                     {/* ToDo: Add logic:  if Admin, then show this menu option */}
-                                    <NavItem>
+                                    {/* <NavItem>
                                         <NavLink to='admin'>
                                             <Link to='/Admin' >
                                                 Admin
                                             </Link>
                                         </NavLink>
-                                    </NavItem>
+                                    </NavItem> */}
 
                                 </>
                             ) : (
                                 <></>
                             )}
 
+                            {this.props.adminRole === "User Admin" ? (
+                                <>
+                                <NavItem>
+                                        <NavLink to='admin'>
+                                            <Link to='/Admin' >
+                                                Admin
+                                            </Link>
+                                        </NavLink>
+                                    </NavItem>
+                                </>
+                            ) : (
+                                <></>
+                            )}
 
                         </Nav>
 

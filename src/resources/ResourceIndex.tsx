@@ -90,7 +90,7 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
     render() {
         console.info('In ResouceIndex')
         return (
-            <Container>
+            <Container className="resource-container">
                 <Row>
                     <Col md="3">
                         <ResourceCreate 

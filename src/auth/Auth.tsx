@@ -6,6 +6,7 @@ import Login from './Login'
 
 type AuthProps = {
     updateToken: (newToken: string) => void
+    updateRole: (newRole: string) => void
 }
 
 
@@ -21,19 +22,17 @@ export default class Auth extends Component<AuthProps, {}> {
                 <Container>
                     <Row>
                         <Col md='6' >
-                            <Signup updateToken={this.props.updateToken} />
+                            <Signup updateToken={this.props.updateToken} 
+                            updateRole={this.props.updateRole}
+                            />
                         </Col>
                         <Col md='6'>
                             <Login 
-                                updateToken={this.props.updateToken} 
+                                updateToken={this.props.updateToken} updateRole={this.props.updateRole}
                             />
                         </Col>
                     </Row>
                 </Container>
-
-              
-            
-
             </>
         )
     }

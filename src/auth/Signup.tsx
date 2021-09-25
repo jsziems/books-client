@@ -4,12 +4,14 @@ import { Redirect } from 'react-router-dom'
 
 type SignupProps = {
     updateToken: (newToken: string) => void
+    updateRole: (newRole: string) => void
 }
 type SignupState = {
     email: string,
     password: string,
     firstName: string,
     lastName: string,
+    adminRole: string,
     successfulLogin: boolean
 }
 
@@ -21,6 +23,7 @@ export default class Signup extends Component<SignupProps, SignupState> {
             password: '',
             firstName: '',
             lastName: '',
+            adminRole: 'None',
             successfulLogin: false
         }
 
@@ -28,13 +31,11 @@ export default class Signup extends Component<SignupProps, SignupState> {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    // QUESTION: How does React.ChangeEvent work?
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         console.info('In Signup:  handleChange')
         const target = event.target;
         const value = target.value
         const name = target.name
-        // QUESTION:  How does this work?
         this.setState({ [name]: value } as unknown as
             Pick<SignupState, keyof SignupState>)
 
@@ -59,8 +60,9 @@ export default class Signup extends Component<SignupProps, SignupState> {
             .then(res => res.json())
             .then(data => {
                 this.props.updateToken(data.sessionToken)
+                this.props.updateRole(data.adminRole)
                 this.setState({ successfulLogin: true })
-                console.info(`In Signup handleSubmit, data is ${data.sessionToken}`)
+                console.info(`In Signup handleSubmit, token is ${data.sessionToken} and admin role is ${data.adminRole}`)
             })
             .catch(err => {
                 console.error(err)

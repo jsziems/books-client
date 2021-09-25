@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Card, CardBody, CardFooter, CardImg, CardText, CardTitle } from 'reactstrap'
 
+import './Resource.css'
 import { Resource } from '../types'
 
 
@@ -33,7 +34,7 @@ export default class ResourceCards extends Component<Props, {}> {
                     {this.props.resources.map((resource, resourceId)  => {
                         return (
                             // ToDo: Change classname
-                            <div className='testing'>
+                            <div className='card-div'>
                                 <Card key={resourceId}>
                                     <CardImg variant="top" src="holder.js/100px160" />
                                     <CardBody>

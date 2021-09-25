@@ -4,12 +4,14 @@ import { Redirect } from 'react-router-dom'
 
 type LoginProps = {
     updateToken: (newToken: string) => void
+    updateRole: (newRole: string) => void
 }
 
 type LoginState = {
     email: string,
     password: string,
-    successfulLogin: boolean
+    successfulLogin: boolean,
+    adminRole: string
 }
 
 export default class Login extends Component<LoginProps, LoginState> {
@@ -18,7 +20,8 @@ export default class Login extends Component<LoginProps, LoginState> {
         this.state = {
             email: '',
             password: '',
-            successfulLogin: false
+            successfulLogin: false,
+            adminRole: "None"
         }
     }
 
@@ -49,8 +52,9 @@ export default class Login extends Component<LoginProps, LoginState> {
         .then(res => res.json())
         .then(data => {
             this.props.updateToken(data.sessionToken)
+            this.props.updateRole(data.adminRole)
             this.setState({ successfulLogin: true })
-            console.info(`In Login handleSubmit, data is ${data.sessionToken}`)
+            console.info(`In Login handleSubmit, token is ${data.sessionToken} admin role is ${data.adminRole}`)
         })
         .catch(err => {
             console.error(err)
@@ -85,6 +89,7 @@ export default class Login extends Component<LoginProps, LoginState> {
                     </FormGroup>
                     <Button type='submit'>Login</Button>
                 </Form>
+
                 { this.state.successfulLogin ?
                 <>
                     <Redirect push to='/'/>

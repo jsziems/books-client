@@ -8,14 +8,24 @@ import Home from './common/Home'
 import ResourceIndex from './resources/ResourceIndex'
 import UserIndex from './userAdmin/UserIndex'
 
-type AppState = { token: string }
+type AppState = { 
+  token: string,
+  adminRole: string
+ }
 
 class App extends Component<{}, AppState> {
   constructor(props: {}) {
     super(props)
     this.state = {
-      token: localStorage.getItem("token") || ""
+      token: localStorage.getItem("token") || "",
+      adminRole: localStorage.getItem("adminRole") || "None"
     }
+  }
+
+  updateRole = (newRole: string) => {
+    localStorage.setItem('adminRole', newRole)
+    this.setState({ adminRole: newRole })
+    console.info(`In udpateRole, adminRole is ${this.state.adminRole}`)
   }
 
   updateToken = (newToken: string) => {
@@ -24,15 +34,13 @@ class App extends Component<{}, AppState> {
     console.info(`In udpateToken, token is ${this.state.token}`)
   }
 
-  clearToken = () => {
+  clearStorage = () => {
     localStorage.clear()
     this.setState({ token: '' })
-  }
 
-  // componentDidMount() {
-  //   this.setState({ token: localStorage.getItem("token") || "" })
-  //   console.info(this.state.token)
-  // }
+    localStorage.clear() 
+    this.setState({ adminRole: '' })
+  }
 
   urlPatterns = () => {
     return (
@@ -41,7 +49,7 @@ class App extends Component<{}, AppState> {
           <Home />
         </Route>
         <Route exact path='/auth'>
-          <Auth updateToken={this.updateToken} />
+          <Auth updateToken={this.updateToken} updateRole={this.updateRole}/>
         </Route>
         <Route exact path='/resourceIndex'>
           <ResourceIndex token={this.state.token} />
@@ -57,7 +65,7 @@ class App extends Component<{}, AppState> {
     return (
       <div className="App">
         <Router>
-          <Sitebar logout={this.clearToken} token={this.state.token} />
+          <Sitebar logout={this.clearStorage} token={this.state.token} adminRole={this.state.adminRole} />
           {this.urlPatterns()}
         </Router>
       </div>
