@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Button, Card, CardBody, CardFooter, CardImg, CardText, CardTitle } from 'reactstrap'
+import { Button, Card, CardBody, CardImg, CardLink, CardText, CardTitle } from 'reactstrap'
 
-import './Resource.css'
+// import './Resource.css'
 import { Resource } from '../types'
 
 
@@ -33,7 +33,6 @@ export default class ResourceCards extends Component<Props, {}> {
                 <div className="cards-container">
                     {this.props.resources.map((resource, resourceId)  => {
                         return (
-                            // ToDo: Change classname
                             <div className='card-div'>
                                 <Card key={resourceId}>
                                     <CardImg variant="top" src="holder.js/100px160" />
@@ -42,24 +41,21 @@ export default class ResourceCards extends Component<Props, {}> {
                                         <p>{resource.author}</p>
                                         <p>{resource.topic}</p>
                                         <p>{resource.media}</p>
-                                        <p>{resource.link}</p>
+                                        <CardLink href={resource.link} target='_blank'>Link</CardLink>
                                         <p>{resource.readStatus}</p>
 
-                                        <Button onClick={() => {
+                                        <Button className='card-button' onClick={() => {
                                             this.props.editResource(resource)
                                             this.props.updateOn()
                                         }}
                                         >Edit
                                         </Button>
-                                        <Button onClick={() => {
+                                        <Button className='card-button' onClick={() => {
                                             this.deleteResource(resource)
                                         }}
                                         >Delete
                                         </Button>
                                     </CardBody>
-                                    <CardFooter>
-                                        <small className="text-muted">Last updated 3 mins ago</small>
-                                    </CardFooter>
                                 </Card>
                             </div>
                         )

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
+import { GlobalStyle } from './App.styles'
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Auth from './auth/Auth'
@@ -63,12 +64,15 @@ class App extends Component<{}, AppState> {
 
   render() {
     return (
-      <div className="App">
+      // <div className="App">
+      <>
+      <GlobalStyle />
         <Router>
           <Sitebar logout={this.clearStorage} token={this.state.token} adminRole={this.state.adminRole} />
           {this.urlPatterns()}
         </Router>
-      </div>
+        </>
+      //  </div> 
     );
   }
 }

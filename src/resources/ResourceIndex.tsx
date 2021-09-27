@@ -92,13 +92,13 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
         return (
             <Container className="resource-container">
                 <Row>
-                    <Col md="3">
+                    <Col md="4" className="create-col">
                         <ResourceCreate 
                             fetchResources={this.fetchResources} 
                             token={this.props.token} 
                         />
                     </Col>
-                    <Col md='9'>
+                    <Col md='8'>
                         <div>
                             <Input className='search-box' placeholder="Search..." onChange={this.filterCards} />
 

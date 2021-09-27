@@ -1,19 +1,57 @@
 
 .resource-container {
-    margin-top: 3rem;
+    margin-top: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    padding-right: 1rem;
 }
 
 .resource-form {
     border: 2px;
 }
 
+.create-resource {
+  border: '2px'
+}
+
+.search-box {
+  outline: none;
+  width: 100%;
+  height: 2.5rem;
+  border: 1px solid grey;
+  font-size: 1rem;
+  padding: 1rem;
+}
+
 .cards-container {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     flex-wrap: wrap;
   }
   
   .card-div {
     margin: 1rem 1rem;
     width: 25%;
+  }
+
+  .input {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    margin-left: .5rem;
+    margin-right: .5rem;
+  }
+  .submit-button {
+    margin-top: 1rem;
+    margin-left: .2rem;
+    margin-right: .2rem;
+  }
+
+  .card-button {
+    padding: .2rem;
+    margin-left: .2rem;
+    margin-right: .2rem;
+    /* font-size: 1.5vw; */
+    /* font-size: 8vw; */
+    
   }

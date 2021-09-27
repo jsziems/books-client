@@ -40,9 +40,9 @@ export default class ResourceEdit extends Component<Props, ResourceEditState> {
         const value = target.value
         const name = target.name
 
-        this.setState( { [name]: value} as unknown as Pick<
+        this.setState({ [name]: value } as unknown as Pick<
             ResourceEditState, keyof ResourceEditState
-            >)
+        >)
     }
 
     handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -69,6 +69,11 @@ export default class ResourceEdit extends Component<Props, ResourceEditState> {
         })
     }
 
+    handleCancel = () => {
+        this.props.fetchResources()
+        this.props.updateOff()
+    }
+
     render() {
         console.info('In ResourceEdit')
         return (
@@ -77,23 +82,91 @@ export default class ResourceEdit extends Component<Props, ResourceEditState> {
                     <ModalHeader>Update your Selection</ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.handleSubmit}>
-                        <FormGroup>
-                        <Label htmlFor='title'>Title:</Label>
-                        <Input 
-                            name='title'
-                            value={this.state.title}
-                            onChange={this.handleChange}
-                        />
-                        </FormGroup>
-                        <FormGroup>
-                        <Label htmlFor='readStatus'>Enter the Status:</Label>
-                        <Input 
-                            name='readStatus'
-                            value={this.state.readStatus}
-                            onChange={this.handleChange}
-                        />
-                        </FormGroup>
-                        <Button type='submit'>Update</Button>
+                            <FormGroup>
+                                <Input
+                                    className="input"
+                                    placeholder="Title"
+                                    name='title'
+                                    value={this.state.title}
+                                    onChange={this.handleChange}
+                                >
+                                </Input>
+                            </FormGroup>
+                            <FormGroup>
+                                <Input
+                                    className="input"
+                                    placeholder="Author"
+                                    name='author'
+                                    value={this.state.author}
+                                    onChange={this.handleChange}
+                                >
+                                </Input>
+                            </FormGroup>
+                            <FormGroup>
+                                <Input
+                                    className="input"
+                                    placeholder="Link"
+                                    name='link'
+                                    value={this.state.link}
+                                    onChange={this.handleChange}
+                                >
+                                </Input>
+                            </FormGroup>
+                            <FormGroup>
+                                <Input
+                                    className="input"
+                                    placeholder='Topic'
+                                    name='topic'
+                                    value={this.state.topic}
+                                    onChange={this.handleChange}
+                                >
+                                </Input>
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor='media' hidden></Label>
+                                {/* ToDo: drop down arrow not showing. */}
+                                {/* ToDo: Move label? */}
+                                <Input
+                                    className="input"
+                                    type='select'
+                                    name='media'
+                                    value={this.state.media}
+                                    onChange={this.handleChange}
+                                >
+                                    <option value="Article">Article</option>
+                                    <option value="Video">Video</option>
+                                    <option value="Podcast">Podcast</option>
+                                    <option value="Code Repository">Code Repository</option>
+                                    <option value="Book">Book</option>
+                                </Input>
+                            </FormGroup>
+
+                            <FormGroup>
+                                <Label htmlFor='readStatus'>Enter the Status:</Label>
+                                <Input
+                                    name='readStatus'
+                                    value={this.state.readStatus}
+                                    onChange={this.handleChange}
+                                />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor='summary'>Enter a summary:</Label>
+                                <Input
+                                    name='summary'
+                                    value={this.state.summary}
+                                    onChange={this.handleChange}
+                                />
+                            </FormGroup>
+                            <FormGroup>
+                                <Label htmlFor='rating'>Rating:</Label>
+                                <Input
+                                    name='rating'
+                                    value={this.state.rating}
+                                    onChange={this.handleChange}
+                                />
+                            </FormGroup>
+                            <Button type='submit'>Update</Button>
+                            <Button onClick={this.handleCancel}>Cancel</Button>
                         </Form>
                     </ModalBody>
                 </Modal>

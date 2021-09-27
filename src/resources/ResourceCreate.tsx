@@ -41,6 +41,7 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
         this.setState({ [name]: value } as unknown as Pick<ResourceCreateState,
             keyof ResourceCreateState
         >)
+        console.log(value)
     }
 
     handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -80,15 +81,21 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
             })
     }
 
+    handleCancel = () => {
+        this.props.fetchResources()
+    }
+
     render() {
         console.info('In ResourceCreate')
         return (
-            <>
+            <div className='create-resource'>
                 <h4>Add a Resource</h4>
-                <Form style={{border: '2px'}} onSubmit={this.handleSubmit}>
+                {/* ToDo: Border isn't working.  Also need additional styling  */}
+                <Form style={{ border: '2px' }} onSubmit={this.handleSubmit}>
                     <FormGroup>
-                        <Label style={{color: "red"}} htmlFor='title'>Title</Label>
                         <Input
+                            className="input"
+                            placeholder="Title"
                             name='title'
                             value={this.state.title}
                             onChange={this.handleChange}
@@ -96,8 +103,9 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
                         </Input>
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor='author'>Author</Label>
                         <Input
+                            className="input"
+                            placeholder="Author"
                             name='author'
                             value={this.state.author}
                             onChange={this.handleChange}
@@ -105,8 +113,9 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
                         </Input>
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor='link'>Link</Label>
                         <Input
+                            className="input"
+                            placeholder="Link"
                             name='link'
                             value={this.state.link}
                             onChange={this.handleChange}
@@ -114,26 +123,39 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
                         </Input>
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor='topic'>Topic</Label>
+                        <Label htmlFor='media' hidden></Label>
+                        {/* ToDo: drop down arrow not showing. */}
+                        {/* ToDo: Move label? */}
+                        {/* ToDo: not saving data */}
                         <Input
+                            className="input"
+                            type='select'
+                            name='media'
+                            value={this.state.media}
+                            onChange={this.handleChange}
+                        >
+                            <option value="Article">Article</option>
+                            <option value="Video">Video</option>
+                            <option value="Podcast">Podcast</option>
+                            <option value="Code Repository">Code Repository</option>
+                            <option value="Book">Book</option>
+                        </Input>
+                    </FormGroup>
+                    <FormGroup>
+                        <Input
+                            className="input"
+                            placeholder='Topic'
                             name='topic'
                             value={this.state.topic}
                             onChange={this.handleChange}
                         >
                         </Input>
                     </FormGroup>
-                    <FormGroup>
-                        <Label htmlFor='media'>Media</Label>
-                        <Input
-                            name='media'
-                            value={this.state.media}
-                            onChange={this.handleChange}
-                        >
-                        </Input>
-                    </FormGroup>
-                    <Button type='submit'>Add Resource</Button>
+                    
+                    <Button className='submit-button' type='submit'>Add Resource</Button>
+                    <Button className='submit-button' type='reset' onClick={this.handleCancel}>Cancel</Button>
                 </Form>
-            </>
+            </div>
         )
     }
 }
