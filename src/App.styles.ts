@@ -2,10 +2,6 @@ import styled, { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
 
-// .App {
-//     // width: 100%;
-//     text-align: center;
-// }
 
     body  {
         // width: 100%;
@@ -24,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     h4 {
-        color: #51958a;
+        color: #033d68;
     }
 
     button {
@@ -33,8 +29,36 @@ export const GlobalStyle = createGlobalStyle`
         border-radius: .3rem;
         background-color: #7A8791;
         color: white;
-
     }
 
+    .cards-container {
+        display: flex;
+        justify-content: left;
+        flex-wrap: wrap;
+    }
+      
+    .card-div {
+        margin: 1rem 1rem;
+        width: 25%;
+        color: black;
+    }
     
+    .modal-header {
+        background-color: #033d68;
+        color: white;
+        text-align: center;
+        justify-content: center;
+
+    }
+    .modal {
+        color: black;
+        justify-content: left;
+        text-align: left;
+        font-size: .9rem;
+    }
+
+    .label {
+        display: flex;
+    }
+
     `

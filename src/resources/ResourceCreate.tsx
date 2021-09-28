@@ -73,7 +73,7 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
                     link: '',
                     topic: '',
                     media: '',
-                    readStatus: 'In my queue',
+                    readStatus: 'Not started',
                     summary: '',
                     rating: '0'
                 })
@@ -91,7 +91,7 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
             <div className='create-resource'>
                 <h4>Add a Resource</h4>
                 {/* ToDo: Border isn't working.  Also need additional styling  */}
-                <Form style={{ border: '2px' }} onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Input
                             className="input"
@@ -123,7 +123,7 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
                         </Input>
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor='media' hidden></Label>
+                        <Label className="label" htmlFor='media'>Select Media:</Label>
                         {/* ToDo: drop down arrow not showing. */}
                         {/* ToDo: Move label? */}
                         {/* ToDo: not saving data */}
@@ -140,20 +140,9 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
                             <option value="Code Repository">Code Repository</option>
                             <option value="Book">Book</option>
                         </Input>
-                    </FormGroup>
-                    <FormGroup>
-                        <Input
-                            className="input"
-                            placeholder='Topic'
-                            name='topic'
-                            value={this.state.topic}
-                            onChange={this.handleChange}
-                        >
-                        </Input>
-                    </FormGroup>
-                    
-                    <Button className='submit-button' type='submit'>Add Resource</Button>
-                    <Button className='submit-button' type='reset' onClick={this.handleCancel}>Cancel</Button>
+                    </FormGroup>        
+                    <Button type='submit'>Add Resource</Button>
+                    <Button type='reset' onClick={this.handleCancel}>Cancel</Button>
                 </Form>
             </div>
         )

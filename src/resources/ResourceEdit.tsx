@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { Button, Col, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, Row } from 'reactstrap';
 
 
 type Props = {
@@ -39,7 +39,7 @@ export default class ResourceEdit extends Component<Props, ResourceEditState> {
         const target = e.target
         const value = target.value
         const name = target.name
-
+        console.log(`In handleChange, value is ${value} for ${name}`)
         this.setState({ [name]: value } as unknown as Pick<
             ResourceEditState, keyof ResourceEditState
         >)
@@ -77,100 +77,115 @@ export default class ResourceEdit extends Component<Props, ResourceEditState> {
     render() {
         console.info('In ResourceEdit')
         return (
-            <div>
+            <div className='modal'>
                 <Modal isOpen={true}>
-                    <ModalHeader>Update your Selection</ModalHeader>
+                    <div className='modal-header'>
+                        <ModalHeader>Update Your Selection</ModalHeader>
+                    </div>
                     <ModalBody>
                         <Form onSubmit={this.handleSubmit}>
-                            <FormGroup>
-                                <Input
-                                    className="input"
-                                    placeholder="Title"
-                                    name='title'
-                                    value={this.state.title}
-                                    onChange={this.handleChange}
-                                >
-                                </Input>
+                            <FormGroup row>
+                                <Label htmlFor='title' sm={4}>Title:</Label>
+                                <Col sm={10}>
+                                    <Input
+                                        name='title'
+                                        value={this.state.title}
+                                        onChange={this.handleChange}
+                                    >
+                                    </Input>
+                                </Col>
                             </FormGroup>
-                            <FormGroup>
-                                <Input
-                                    className="input"
-                                    placeholder="Author"
-                                    name='author'
-                                    value={this.state.author}
-                                    onChange={this.handleChange}
-                                >
-                                </Input>
+                            <FormGroup row>
+                                <Label htmlFor='author' sm={4}>Author:</Label>
+                                <Col sm={10}>
+                                    <Input
+                                        name='author'
+                                        value={this.state.author}
+                                        onChange={this.handleChange}
+                                    >
+                                    </Input>
+                                </Col>
                             </FormGroup>
-                            <FormGroup>
-                                <Input
-                                    className="input"
-                                    placeholder="Link"
-                                    name='link'
-                                    value={this.state.link}
-                                    onChange={this.handleChange}
-                                >
-                                </Input>
+                            <FormGroup row>
+                                <Label htmlFor='link' sm={4}>Link:</Label>
+                                <Col sm={10}>
+                                    <Input
+                                        name='link'
+                                        value={this.state.link}
+                                        onChange={this.handleChange}
+                                    >
+                                    </Input>
+                                </Col>
                             </FormGroup>
-                            <FormGroup>
-                                <Input
-                                    className="input"
-                                    placeholder='Topic'
-                                    name='topic'
-                                    value={this.state.topic}
-                                    onChange={this.handleChange}
-                                >
-                                </Input>
-                            </FormGroup>
-                            <FormGroup>
-                                <Label htmlFor='media' hidden></Label>
+                            <FormGroup row>
+                                <Label htmlFor='media'>Select Media:</Label>
                                 {/* ToDo: drop down arrow not showing. */}
-                                {/* ToDo: Move label? */}
-                                <Input
-                                    className="input"
-                                    type='select'
-                                    name='media'
-                                    value={this.state.media}
-                                    onChange={this.handleChange}
-                                >
-                                    <option value="Article">Article</option>
-                                    <option value="Video">Video</option>
-                                    <option value="Podcast">Podcast</option>
-                                    <option value="Code Repository">Code Repository</option>
-                                    <option value="Book">Book</option>
-                                </Input>
+                                <Col sm={10}>
+                                    <Input
+                                        type='select'
+                                        name='media'
+                                        value={this.state.media}
+                                        onChange={this.handleChange}
+                                    >
+                                        <option value="Article">Article</option>
+                                        <option value="Video">Video</option>
+                                        <option value="Podcast">Podcast</option>
+                                        <option value="Code Repository">Code Repository</option>
+                                        <option value="Book">Book</option>
+                                    </Input>
+                                </Col>
+                            </FormGroup>
+                            <Row>
+                                <Col md={5}>
+                                    <FormGroup>
+                                        <Label htmlFor='readStatus'>Select Status:</Label>
+
+                                        <Input
+                                            type='select'
+                                            name='readStatus'
+                                            value={this.state.readStatus}
+                                            onChange={this.handleChange}
+                                        >
+                                            <option value="Not started">Not started</option>
+                                            <option value="In Progress">In Progress</option>
+                                            <option value="Finished">Finished</option>
+                                        </Input>
+                                    </FormGroup>
+                                </Col>
+                                <Col md={5}>
+                                    <FormGroup>
+                                        <Label htmlFor='rating'>Select Rating:</Label>
+                                        {/* ToDo: drop down arrow not showing. */}
+                                        <Input
+                                            type='select'
+                                            name='rating'
+                                            value={this.state.rating}
+                                            onChange={this.handleChange}
+                                        >
+                                            <option value="Meh">Meh</option>
+                                            <option value="Good">Good</option>
+                                            <option value="Excellent">Excellent</option>
+                                        </Input>
+                                    </FormGroup>
+                                </Col>
+                            </Row>
+                            <FormGroup row>
+                                <Label htmlFor='summary' sm={4}>Summary:</Label>
+                                <Col sm={10}>
+                                    <Input
+                                        name='summary'
+                                        value={this.state.summary}
+                                        onChange={this.handleChange}
+                                    />
+                                </Col>
                             </FormGroup>
 
-                            <FormGroup>
-                                <Label htmlFor='readStatus'>Enter the Status:</Label>
-                                <Input
-                                    name='readStatus'
-                                    value={this.state.readStatus}
-                                    onChange={this.handleChange}
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label htmlFor='summary'>Enter a summary:</Label>
-                                <Input
-                                    name='summary'
-                                    value={this.state.summary}
-                                    onChange={this.handleChange}
-                                />
-                            </FormGroup>
-                            <FormGroup>
-                                <Label htmlFor='rating'>Rating:</Label>
-                                <Input
-                                    name='rating'
-                                    value={this.state.rating}
-                                    onChange={this.handleChange}
-                                />
-                            </FormGroup>
                             <Button type='submit'>Update</Button>
                             <Button onClick={this.handleCancel}>Cancel</Button>
                         </Form>
                     </ModalBody>
                 </Modal>
-            </div>
+            </div >
         );
     }
 }

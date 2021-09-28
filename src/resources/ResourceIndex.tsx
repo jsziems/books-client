@@ -16,11 +16,10 @@ const BackgroundImg = styled.div`
     background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
+    padding-top: 3rem;
     margin: auto;
     justify-content: center;
     align-items: center;
-
-    
 `
 
 type Props = {

@@ -3,21 +3,40 @@ import { Button, Card, CardImg, CardImgOverlay, CardBody, CardText, CardTitle, C
 import { Link } from 'react-router-dom'
 
 import styled from 'styled-components'
-import homeImage from '../assets/alexis-brown-omeaHbEFlN4-unsplash.jpeg'
+import homeImage from '../assets/bookClub.jpg'
+import fannedBook from '../assets/fannedBook.jpg'
 
+const BackgroundImg = styled.div`
+    background-image: url(${fannedBook});
+    background-size: cover;
+    background-repeat: no-repeat;
+    // opacity: .75;
+    height: 100vh;
+    width: 100vw;
+    padding-top: 3rem;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+`
 const Welcome = styled.h1`
     margin-top: 5rem;
     margin-bottom: 5rem;
-    color: #51958a;
+    font-size: 8rem;
 `
+
+const WelcomeText = styled.p`
+    font-size: 2rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    `
 
 const HomeButton = styled.button`
     margin-top: 2rem;
     margin: .5rem;
-    border: 1px solid #51958a;
+    border: 1px solid white;
     border-radius: .3rem;
-    background-color: transparent;
-    color: #51958a;
+    background-color: white; //#033d68; //transparent;
+    color: #26272D;
 `
 
 export default class Home extends Component {
@@ -28,22 +47,26 @@ export default class Home extends Component {
         return (
             <>
                 <div>
+                    <BackgroundImg>
                     <Container>
                         {/* ToDo: Add Text */}
                         <Welcome>Welcome! </Welcome>
-                        <Row>
+                        <WelcomeText>If you have a queue of books to read, podcasts to listen to, articles that sounded interesting, or helpful videos, you've come to the right place!  Developer Digest collects all that information for easy reference, and, provides a place to summarize and rate each item.  </WelcomeText>
+                        <Link to='../Auth'>
+                            <HomeButton>Click Here to Get Started</HomeButton>
+                        </Link>
+                        {/* <Row>
                             <Col md="3"></Col>
                             <Col md="6" className="create-col">
                                 <Card>
                                     <CardImg top width="60%" src={homeImage} />
                                 </Card>
-                                <Link to='../Auth'>
-                                    <HomeButton>Click Here to Get Started</HomeButton>
-                                </Link>
+                                
                             </Col>
                             <Col md="3"></Col>
-                        </Row>
+                        </Row> */}
                     </Container>
+                    </BackgroundImg>
                 </div>
             </>
         )

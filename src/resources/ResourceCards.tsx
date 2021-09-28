@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Button, Card, CardBody, CardImg, CardLink, CardText, CardTitle } from 'reactstrap'
 
-// import './Resource.css'
+import '../App.styles'
+import bookPath from '../assets/bookPath.jpg'
+import bookClub from '../assets/bookClub.jpg'
 import { Resource } from '../types'
-
 
 type Props = {
     resources: Resource[]
@@ -27,7 +28,6 @@ export default class ResourceCards extends Component<Props, {}> {
     }
 
     render() {
-
         return (
             <>
                 <div className="cards-container">
@@ -35,11 +35,10 @@ export default class ResourceCards extends Component<Props, {}> {
                         return (
                             <div className='card-div'>
                                 <Card key={resourceId}>
-                                    <CardImg variant="top" src="holder.js/100px160" />
+                                    <CardImg variant="top" src={bookClub}/>
                                     <CardBody>
-                                        <CardTitle>{resource.title}</CardTitle>
+                                    <CardTitle>{resource.title}</CardTitle>
                                         <p>{resource.author}</p>
-                                        <p>{resource.topic}</p>
                                         <p>{resource.media}</p>
                                         <CardLink href={resource.link} target='_blank'>Link</CardLink>
                                         <p>{resource.readStatus}</p>
