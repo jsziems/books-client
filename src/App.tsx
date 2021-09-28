@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import './App.css';
+
 import { GlobalStyle } from './App.styles'
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -8,6 +9,10 @@ import Sitebar from './common/Sitebar'
 import Home from './common/Home'
 import ResourceIndex from './resources/ResourceIndex'
 import UserIndex from './userAdmin/UserIndex'
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Lato&family=Montserrat&display=swap');
+</style>
 
 type AppState = { 
   token: string,

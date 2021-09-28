@@ -73,12 +73,14 @@ export default class Signup extends Component<SignupProps, SignupState> {
     render() {
         return (
             <div>
-                <h1>Sign Up</h1>
+                <h2>Sign Up</h2>
                 {/* ToDo MIN LENGTH NOT WORKING */}
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
-                        <Label htmlFor='email'>Email Address</Label>
+                        <Label htmlFor='email'></Label>
                         <Input
+                            style={{ backgroundColor: '#DDDFE2' }}
+                            placeholder="Email Address"
                             onChange={this.handleChange}
                             name='email'
                             value={this.state.email}
@@ -87,8 +89,10 @@ export default class Signup extends Component<SignupProps, SignupState> {
                         />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor='password'>Password</Label>
+                        <Label htmlFor='password'></Label>
                         <Input
+                            style={{ backgroundColor: '#DDDFE2' }}
+                            placeholder="Password"
                             onChange={this.handleChange}
                             name='password'
                             value={this.state.password}
@@ -99,8 +103,10 @@ export default class Signup extends Component<SignupProps, SignupState> {
                         />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor='firstName'>First Name</Label>
+                        <Label htmlFor='firstName'></Label>
                         <Input
+                            style={{ backgroundColor: '#DDDFE2' }}
+                            placeholder="First Name"
                             onChange={this.handleChange}
                             name='firstName'
                             value={this.state.firstName}
@@ -108,21 +114,24 @@ export default class Signup extends Component<SignupProps, SignupState> {
                         />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor='lastName'>Last Name</Label>
+                        <Label htmlFor='lastName'></Label>
                         <Input
+                            style={{ backgroundColor: '#DDDFE2' }}
+                            placeholder="Last Name"
                             onChange={this.handleChange}
                             name='lastName'
                             value={this.state.lastName}
                             type='text'
                         />
                     </FormGroup>
-                    <Button type='submit'>Sign Up</Button>
+                    <button type='submit'>Sign Up</button>
                 </Form>
-                { this.state.successfulLogin ?
-                <>
-                    <Redirect push to='/'/>
-                </>
-                : <></>}
+                {this.state.successfulLogin ?
+                    <>
+                         <Redirect push to='/ResourceIndex'/>
+                        {/* <Redirect push to='/' /> */}
+                    </>
+                    : <></>}
             </div>
         )
     }

@@ -65,11 +65,13 @@ export default class Login extends Component<LoginProps, LoginState> {
     render() {
         return (
             <div>
-                <h1>Login</h1>
+                <h2>Login</h2>
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
-                        <Label htmlFor='email'>Email Address</Label>
+                        <Label htmlFor='email'></Label>
                         <Input
+                        style={{backgroundColor: '#DDDFE2'}}
+                        placeholder="Email Address"
                         onChange={this.handleChange}
                         name='email'
                         value={this.state.email}
@@ -78,8 +80,10 @@ export default class Login extends Component<LoginProps, LoginState> {
                         />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor='password'>Password</Label>
+                        <Label htmlFor='password'></Label>
                         <Input
+                        style={{backgroundColor: '#DDDFE2'}}
+                        placeholder="Password"
                         onChange={this.handleChange}
                         name='password'
                         value={this.state.password}
@@ -87,12 +91,14 @@ export default class Login extends Component<LoginProps, LoginState> {
                         type='text'
                         />
                     </FormGroup>
-                    <Button type='submit'>Login</Button>
+                    <button type='submit'>Login</button>
                 </Form>
 
                 { this.state.successfulLogin ?
                 <>
-                    <Redirect push to='/'/>
+                    {/* <Redirect push to='/'/>
+                     */}
+                      <Redirect push to='/ResourceIndex'/>
                 </>
                 : <></>}
             </div>

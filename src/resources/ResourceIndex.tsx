@@ -7,6 +7,21 @@ import ResourceCards from './ResourceCards'
 import ResourceCreate from './ResourceCreate'
 import ResourceEdit from './ResourceEdit'
 
+import styled from 'styled-components'
+import bookStack from '../assets/bookStack.jpg'
+
+const BackgroundImg = styled.div`
+    background-image: url(${bookStack});
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+
+    
+`
 
 type Props = {
     token: string
@@ -80,50 +95,46 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
         this.setState({ resources: filteredResources })
     }
 
-    // addResource = () => {
-    //     <ResourceCreate
-    //         fetchResources={this.fetchResources}
-    //         token={this.props.token}
-    //     />
-    // }
-
     render() {
         console.info('In ResouceIndex')
         return (
-            <Container className="resource-container">
-                <Row>
-                    <Col md="4" className="create-col">
-                        <ResourceCreate 
-                            fetchResources={this.fetchResources} 
-                            token={this.props.token} 
-                        />
-                    </Col>
-                    <Col md='8'>
-                        <div>
-                            <Input className='search-box' placeholder="Search..." onChange={this.filterCards} />
 
-
-                            <ResourceCards
-                                resources={this.state.resources}
-                                editResource={this.editResource}
+            <BackgroundImg>
+                <Container fluid={true} className="resource-container">
+                {/* <Container className="themed-container" fluid={true}> */}
+                    <Row>
+                        <Col lg="4" className="create-col">
+                            <ResourceCreate
+                                fetchResources={this.fetchResources}
                                 token={this.props.token}
-                                updateOn={this.updateOn}
+                            />
+                        </Col>
+                        <Col lg='8'>
+                            <div>
+                                <Input className='search-box' placeholder="Search..." onChange={this.filterCards} />
+
+                                <ResourceCards
+                                    resources={this.state.resources}
+                                    editResource={this.editResource}
+                                    token={this.props.token}
+                                    updateOn={this.updateOn}
+                                    fetchResources={this.fetchResources}
+                                />
+                            </div>
+                        </Col>
+                        {this.state.updateActive && this.state.resourceToEdit
+                            ? (<ResourceEdit
+                                token={this.props.token}
+                                resourceToEdit={this.state.resourceToEdit}
+                                updateOff={this.updateOff}
                                 fetchResources={this.fetchResources}
                             />
-                        </div>
-                    </Col>
-                    {this.state.updateActive && this.state.resourceToEdit
-                        ? (<ResourceEdit
-                            token={this.props.token}
-                            resourceToEdit={this.state.resourceToEdit}
-                            updateOff={this.updateOff}
-                            fetchResources={this.fetchResources}
-                        />
-                        )
-                        : (<> </>)}
-                </Row>
+                            )
+                            : (<> </>)}
+                    </Row>
 
-            </Container>
+                </Container>
+            </BackgroundImg>
         )
     }
 }

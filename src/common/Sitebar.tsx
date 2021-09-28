@@ -1,7 +1,8 @@
 
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Collapse, Nav, Navbar, NavbarBrand, NavLink, NavbarToggler, NavItem } from 'reactstrap'
+import { Collapse, Nav, Navbar, NavbarBrand, NavLink, NavbarToggler, NavItem } from 'reactstrap'
+import logo from "../assets/Developer.jpg"
 
 type Props = {
     logout: () => void,
@@ -29,21 +30,23 @@ export default class Sitebar extends Component<Props, SitebarState>{
     render() {
         return (
             <div>
-                <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/">Developer Digest</NavbarBrand>
+                <Navbar className="sitebar fixed-top navbar-expand-lg" expand="lg">
+                {/* ToDo: Put logo on navbar.  Need to be resized first? */}
+                <NavbarBrand style={{color: "white"}} href="/">Developer Digest</NavbarBrand>
+                    {/* <NavbarBrand style={{color: "white"}} href="/">src={logo}</NavbarBrand> */}
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="mr-auto" navbar>
                             <NavItem>
-                                <NavLink onClick={this.toggle}>
-                                    <Link to='/'>
+                                <NavLink  onClick={this.toggle}>
+                                    <Link style={{color: "white"}} to='/'>
                                         Home
                                     </Link>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink to='auth'>
-                                    <Link to='/Auth'>
+                                    <Link style={{color: "white"}} to='/Auth'>
                                         Login
                                     </Link>
                                 </NavLink>
@@ -53,27 +56,18 @@ export default class Sitebar extends Component<Props, SitebarState>{
                                 <>
                                     <NavItem>
                                         <NavLink to='resourceIndex'>
-                                            <Link to='/ResourceIndex'>
+                                            <Link style={{color: "white"}}to='/ResourceIndex'>
                                                 Show Resouces
                                             </Link>
                                         </NavLink>
                                     </NavItem>
                                     <NavItem>
                                         <NavLink to='logout'>
-                                            <Link to='/' onClick={this.props.logout}>
+                                            <Link style={{color: "white"}}to='/' onClick={this.props.logout}>
                                                 Logout
                                             </Link>
                                         </NavLink>
                                     </NavItem>
-                                    {/* ToDo: Add logic:  if Admin, then show this menu option */}
-                                    {/* <NavItem>
-                                        <NavLink to='admin'>
-                                            <Link to='/Admin' >
-                                                Admin
-                                            </Link>
-                                        </NavLink>
-                                    </NavItem> */}
-
                                 </>
                             ) : (
                                 <></>
