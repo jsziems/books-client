@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button, Card, CardBody, CardImg, CardLink, CardText, CardTitle } from 'reactstrap'
 
 import '../App.styles'
-import bookPath from '../assets/bookPath.jpg'
+
 import bookClub from '../assets/bookClub.jpg'
 import { Resource } from '../types'
 

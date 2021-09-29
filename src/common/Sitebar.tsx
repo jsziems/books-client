@@ -77,7 +77,7 @@ export default class Sitebar extends Component<Props, SitebarState>{
                                 <>
                                 <NavItem>
                                         <NavLink to='admin'>
-                                            <Link to='/Admin' >
+                                            <Link style={{color: "white"}} to='/Admin' >
                                                 Admin
                                             </Link>
                                         </NavLink>

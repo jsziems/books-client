@@ -32,14 +32,14 @@ export default class Signup extends Component<SignupProps, SignupState> {
     }
 
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.info('In Signup:  handleChange')
+        
         const target = event.target;
         const value = target.value
         const name = target.name
         this.setState({ [name]: value } as unknown as
             Pick<SignupState, keyof SignupState>)
 
-        console.info(`In Signup handleChange, this.state is ${this.state}`)
+        console.info(`In Signup:  handleChange value is ${value} for ${name}`)
     }
 
     handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
@@ -51,7 +51,8 @@ export default class Signup extends Component<SignupProps, SignupState> {
                 email: this.state.email,
                 password: this.state.password,
                 firstName: this.state.firstName,
-                lastName: this.state.lastName
+                lastName: this.state.lastName,
+                adminRole: this.state.adminRole
             }),
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -60,9 +61,9 @@ export default class Signup extends Component<SignupProps, SignupState> {
             .then(res => res.json())
             .then(data => {
                 this.props.updateToken(data.sessionToken)
-                this.props.updateRole(data.adminRole)
+                this.props.updateRole(this.state.adminRole)
                 this.setState({ successfulLogin: true })
-                console.info(`In Signup handleSubmit, token is ${data.sessionToken} and admin role is ${data.adminRole}`)
+                console.info(`In Signup handleSubmit, token is ${data.sessionToken} and admin role is ${this.state.adminRole}`)
             })
             .catch(err => {
                 console.error(err)
@@ -103,6 +104,21 @@ export default class Signup extends Component<SignupProps, SignupState> {
                         />
                     </FormGroup>
                     <FormGroup>
+                        <Label style={{ color: "darkgray", display: 'flex' }} htmlFor='adminRole'>Select Role:</Label>
+                        <Input
+                            type='select'
+                            name='adminRole'
+                            value={this.state.adminRole}
+                            onChange={this.handleChange}
+                            style={{ backgroundColor: '#DDDFE2' }}
+                        >
+                            <option value="None">None</option>
+                            <option value="User Admin">Admin</option>
+                            
+                            
+                        </Input>
+                    </FormGroup>
+                    <FormGroup>
                         <Label htmlFor='firstName'></Label>
                         <Input
                             style={{ backgroundColor: '#DDDFE2' }}
@@ -124,11 +140,12 @@ export default class Signup extends Component<SignupProps, SignupState> {
                             type='text'
                         />
                     </FormGroup>
+                    
                     <button type='submit'>Sign Up</button>
                 </Form>
                 {this.state.successfulLogin ?
                     <>
-                         <Redirect push to='/ResourceIndex'/>
+                        <Redirect push to='/ResourceIndex' />
                         {/* <Redirect push to='/' /> */}
                     </>
                     : <></>}

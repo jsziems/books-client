@@ -9,6 +9,7 @@ import ResourceEdit from './ResourceEdit'
 
 import styled from 'styled-components'
 import bookStack from '../assets/bookStack.jpg'
+// import lightBooks from '../assets/lightBooks.jpg'
 
 const BackgroundImg = styled.div`
     background-image: url(${bookStack});

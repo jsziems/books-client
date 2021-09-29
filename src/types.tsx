@@ -19,7 +19,7 @@ export interface User {
     password: string,
     firstName: string,
     lastName: string,
-    adminRole: boolean,
+    adminRole: string,
     createdAt: string,
     updatedAt: string
 }

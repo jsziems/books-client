@@ -5,6 +5,23 @@ import { User } from '../types'
 import UserEdit from './UserEdit'
 import UserTable from './UserTable'
 
+import styled from 'styled-components'
+import bookStack from '../assets/bookStack.jpg'
+// import lightBooks from '../assets/lightBooks.jpg'
+
+const Background = styled.div`
+    // background-image: url(${bookStack});
+    background-color: #D5DFE5;
+    // background-color: #DDE5EA;
+    background-size: cover;
+    // background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    padding-top: 3rem;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+`
 
 type UserIndexProps = {
     token: string
@@ -45,8 +62,8 @@ export default class Admin extends Component<UserIndexProps, UserIndexState> {
             })
     }
 
-    editThisUser = (user: User) : void => {
-        this.setState({ userToEdit:  user })
+    editThisUser = (user: User): void => {
+        this.setState({ userToEdit: user })
         console.info(user)
     }
 
@@ -65,33 +82,35 @@ export default class Admin extends Component<UserIndexProps, UserIndexState> {
     render() {
         console.info('In UserIndex')
         return (
-
-               <Container>
-                <Row>
-                    <Col md='9'>
-                        <div>
-                            <UserTable
-                                userList={this.state.userList}
-                                editThisUser={this.editThisUser}
+            <Background>
+                <Container>
+                    <Row>
+                        <Col md='9'>
+                            <div>
+                                <UserTable
+                                    userList={this.state.userList}
+                                    editThisUser={this.editThisUser}
+                                    token={this.props.token}
+                                    userUpdateOn={this.userUpdateOn}
+                                    fetchUsers={this.fetchUsers}
+                                />
+                            </div>
+                        </Col>
+                        {this.state.userUpdateActive && this.state.userToEdit
+                            ? (<UserEdit
                                 token={this.props.token}
-                                userUpdateOn={this.userUpdateOn}
+                                userToEdit={this.state.userToEdit}
+                                userUpdateOff={this.userUpdateOff}
                                 fetchUsers={this.fetchUsers}
                             />
-                        </div>
-                    </Col>
-                    {this.state.userUpdateActive && this.state.userToEdit
-                        ? (<UserEdit
-                            token={this.props.token}
-                            userToEdit={this.state.userToEdit}
-                            userUpdateOff={this.userUpdateOff}
-                            fetchUsers={this.fetchUsers}
-                        />
-                        )
-                        : (<> </>)}
-                </Row>
+                            )
+                            : (<> </>)}
+                    </Row>
 
-            </Container>
-        ) 
+                </Container>
+            </Background>
+
+        )
 
     }
 }

@@ -125,8 +125,6 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
                     <FormGroup>
                         <Label className="label" htmlFor='media'>Select Media:</Label>
                         {/* ToDo: drop down arrow not showing. */}
-                        {/* ToDo: Move label? */}
-                        {/* ToDo: not saving data */}
                         <Input
                             className="input"
                             type='select'

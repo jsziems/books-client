@@ -3,8 +3,8 @@ import { Button, Card, CardImg, CardImgOverlay, CardBody, CardText, CardTitle, C
 import { Link } from 'react-router-dom'
 
 import styled from 'styled-components'
-import homeImage from '../assets/bookClub.jpg'
-import fannedBook from '../assets/fannedBook.jpg'
+// import fannedBook from '../assets/fannedBook.jpg'
+import fannedBook from '../assets/fannedBookDk.jpg'
 
 const BackgroundImg = styled.div`
     background-image: url(${fannedBook});
@@ -19,13 +19,13 @@ const BackgroundImg = styled.div`
     align-items: center;
 `
 const Welcome = styled.h1`
-    margin-top: 5rem;
-    margin-bottom: 5rem;
-    font-size: 8rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    font-size: 7rem;
 `
 
 const WelcomeText = styled.p`
-    font-size: 2rem;
+    font-size: 1.9rem;
     margin-left: 4rem;
     margin-right: 4rem;
     `
@@ -51,7 +51,7 @@ export default class Home extends Component {
                     <Container>
                         {/* ToDo: Add Text */}
                         <Welcome>Welcome! </Welcome>
-                        <WelcomeText>If you have a queue of books to read, podcasts to listen to, articles that sounded interesting, or helpful videos, you've come to the right place!  Developer Digest collects all that information for easy reference, and, provides a place to summarize and rate each item.  </WelcomeText>
+                        <WelcomeText>If you have a queue of books to read, podcasts to listen to, articles of interest, and videos that sound promising, you've come to the right place!  Developer Digest collects all that information for easy reference, and, provides a place to summarize and rate each item.  </WelcomeText>
                         <Link to='../Auth'>
                             <HomeButton>Click Here to Get Started</HomeButton>
                         </Link>
