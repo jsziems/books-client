@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Card, CardBody, CardImg, CardLink, CardText, CardTitle } from 'reactstrap'
+import { Button, Card, CardBody, CardImg, CardLink, CardTitle } from 'reactstrap'
 
 import '../App.styles'
 

@@ -26,26 +26,23 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
             author: '',
             link: '',
             topic: '',
-            media: '',
-            readStatus: 'In my queue',
+            media: 'Article',
+            readStatus: 'Not Started',
             summary: '',
-            rating: '0'
+            rating: 'Not rated'
         }
     }
 
     handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.info('In ResourceCreate handleChange')
         const target = e.target
         const value = target.value
         const name = target.name
         this.setState({ [name]: value } as unknown as Pick<ResourceCreateState,
             keyof ResourceCreateState
         >)
-        console.log(value)
     }
 
     handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-        console.info('In ResourceCreate handleSubmit ', this.state)
         e.preventDefault()
         fetch('http://localhost:3000/book/create', {
             method: 'POST',
@@ -66,16 +63,15 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
         })
             .then(res => res.json())
             .then(bookData => {
-                console.info(bookData)
                 this.setState({
                     title: '',
                     author: '',
                     link: '',
                     topic: '',
-                    media: '',
-                    readStatus: 'Not started',
+                    media: 'Article',
+                    readStatus: 'Not Started',
                     summary: '',
-                    rating: '0'
+                    rating: 'Not rated'
                 })
                 this.props.fetchResources()
             })
@@ -86,15 +82,12 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
     }
 
     render() {
-        console.info('In ResourceCreate')
         return (
-            <div className='create-resource'>
+            <div>
                 <h4>Add a Resource</h4>
-                {/* ToDo: Border isn't working.  Also need additional styling  */}
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Input
-                            className="input"
                             placeholder="Title"
                             name='title'
                             value={this.state.title}
@@ -104,7 +97,6 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
                     </FormGroup>
                     <FormGroup>
                         <Input
-                            className="input"
                             placeholder="Author"
                             name='author'
                             value={this.state.author}
@@ -114,7 +106,6 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
                     </FormGroup>
                     <FormGroup>
                         <Input
-                            className="input"
                             placeholder="Link"
                             name='link'
                             value={this.state.link}
@@ -124,9 +115,7 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
                     </FormGroup>
                     <FormGroup>
                         <Label className="label" htmlFor='media'>Select Media:</Label>
-                        {/* ToDo: drop down arrow not showing. */}
                         <Input
-                            className="input"
                             type='select'
                             name='media'
                             value={this.state.media}

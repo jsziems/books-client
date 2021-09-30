@@ -3,7 +3,6 @@ import { Alert, Button, Table } from 'reactstrap'
 
 import { User } from '../types'
 
-
 type Props = {
     userList: User[]
     editThisUser: (user: User) => void
@@ -23,7 +22,6 @@ export default class UserTable extends Component<Props, {}> {
             })
         })
             .then(() => {
-                // ToDo Alert not showing
                 <Alert>Successfully deleted user and their associated resources.</Alert>
                 this.props.fetchUsers()
             }
@@ -31,7 +29,6 @@ export default class UserTable extends Component<Props, {}> {
     }
 
     render() {
-        console.info('In UserTable')
         return (
             <>
                 <Table striped responsive>
@@ -41,6 +38,7 @@ export default class UserTable extends Component<Props, {}> {
                             <th>Email Address</th>
                             <th>First Name</th>
                             <th>Last Name</th>
+                            <th>Role</th>
                             <th>Date Created</th>
                             <th>Last Updated</th>
                         </tr>
@@ -53,6 +51,7 @@ export default class UserTable extends Component<Props, {}> {
                                     <td>{oneUser.email}</td>
                                     <td>{oneUser.firstName}</td>
                                     <td>{oneUser.lastName}</td>
+                                    <td>{oneUser.adminRole}</td>
                                     <td>{oneUser.createdAt}</td>
                                     <td>{oneUser.updatedAt}</td>
                                     <td>

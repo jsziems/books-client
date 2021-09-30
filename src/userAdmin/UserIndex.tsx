@@ -1,20 +1,15 @@
 import React, { Component } from 'react'
-import { Button, Col, Container, Row, Table } from 'reactstrap'
+import { Col, Container, Row } from 'reactstrap'
 
 import { User } from '../types'
 import UserEdit from './UserEdit'
 import UserTable from './UserTable'
 
 import styled from 'styled-components'
-import bookStack from '../assets/bookStack.jpg'
-// import lightBooks from '../assets/lightBooks.jpg'
 
 const Background = styled.div`
-    // background-image: url(${bookStack});
     background-color: #D5DFE5;
-    // background-color: #DDE5EA;
     background-size: cover;
-    // background-repeat: no-repeat;
     height: 100vh;
     width: 100vw;
     padding-top: 3rem;
@@ -44,7 +39,6 @@ export default class Admin extends Component<UserIndexProps, UserIndexState> {
     }
 
     fetchUsers = () => {
-        console.info('In fetchUsers')
         fetch('http://localhost:3000/user', {
             method: 'GET',
             headers: new Headers({
@@ -55,7 +49,6 @@ export default class Admin extends Component<UserIndexProps, UserIndexState> {
             .then((res) => res.json())
             .then((userData) => {
                 this.setState({ userList: userData })
-                console.info(this.state.userList)
             })
             .catch((err) => {
                 console.info(err)
@@ -64,7 +57,6 @@ export default class Admin extends Component<UserIndexProps, UserIndexState> {
 
     editThisUser = (user: User): void => {
         this.setState({ userToEdit: user })
-        console.info(user)
     }
 
     userUpdateOn = () => {
@@ -80,7 +72,6 @@ export default class Admin extends Component<UserIndexProps, UserIndexState> {
     }
 
     render() {
-        console.info('In UserIndex')
         return (
             <Background>
                 <Container>
@@ -106,11 +97,8 @@ export default class Admin extends Component<UserIndexProps, UserIndexState> {
                             )
                             : (<> </>)}
                     </Row>
-
                 </Container>
             </Background>
-
         )
-
     }
 }

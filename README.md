@@ -1,46 +1,54 @@
-# Getting Started with Create React App
+# Developer Digest
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Deployed Project:
+This app can be found on heroku at ????????
 
-## Available Scripts
+## About Developer Digest
+This is the client for a full CRUD  implementation (server's repository <a href="https://github.com/jsziems/books-server">here</a>).  The application allows developers to track materials they want to read, watch or listen to.  It also allows them to rate the material and provide a summary for future reference.
 
-In the project directory, you can run:
+This app is the final project for a 6-month web development course through Eleven Fifty Academy.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies include:
+* Typescript
+* Class Components
+* Lifecycle methods
+* Props and state management
+* Reactstrap
+* Styled Components
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Using Developer Digest
 
-### `npm test`
+### Login
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Begin by selecting 'Login' from the navbar at the top of the screen, or the 'Click here to get started' button in the middle of the screen.  You'll be prompted for an email address, password, name, and special roles.  Special roles are not essential for using the application, so this can be set to 'None'.
 
-### `npm run build`
+### Create a Resource
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Once you've signed up, you can begin entering the items you'd like to track (logging in brings you to this screen, but you can also navigate here using the 'Show Resources' menu option).  The 'Add A Resource' area on the left of the screen is a quick way to enter minimal information about each item.  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Search for Resources
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Each item is displayed on the right portion of the screen.  To filter the items, begin typing words from the title in the Search bar at the top of the screen.  
 
-### `npm run eject`
+### Edit a Resource
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+You can enter additional information about the resource by selecting 'Edit'.  From the edit screen you can update the information provided when the item was created, and can provide other data such as a rating, and a summary.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Delete a Resource
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To remove the resource from Developer Digest, select the Delete button for the resource.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Update and Delete Users
 
-## Learn More
+Users who have the User Admin role will have an 'Admin' option on the navbar.  Select this option to see a listing of the registered Developer Digest users.  Use the 'Update' option to change a user's email address or name.  Select the 'Delete' option to delete a user and their resources.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Credits
+* Book in lap:  Photo by <a href="https://unsplash.com/@joshapplegate?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Josh Applegate</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+* Open book on dark background:  Photo by <a href="https://unsplash.com/@qmikola?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mikołaj</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+* Reading book at table:  Photo by <a href="https://unsplash.com/@alexisrbrown?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alexis Brown</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+* Stack of books: Photo by <a href="https://unsplash.com/@priscilladupreez?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Priscilla Du Preez</a> on <a href="https://unsplash.com/s/photos/stack-of-books?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
+  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+

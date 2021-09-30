@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { Button, Col, Container, Input, Row } from 'reactstrap'
+import { Col, Container, Input, Row } from 'reactstrap'
 
 import { Resource } from '../types'
 import ResourceCards from './ResourceCards'
@@ -9,7 +9,6 @@ import ResourceEdit from './ResourceEdit'
 
 import styled from 'styled-components'
 import bookStack from '../assets/bookStack.jpg'
-// import lightBooks from '../assets/lightBooks.jpg'
 
 const BackgroundImg = styled.div`
     background-image: url(${bookStack});
@@ -46,7 +45,6 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
     }
 
     fetchResources = () => {
-        console.info('In fetchResources')
         fetch('http://localhost:3000/book', {
             method: 'GET',
             headers: new Headers({
@@ -58,7 +56,6 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
             .then((resourceData) => {
                 this.setState({ allResources: resourceData })
                 this.setState({ resources: resourceData })
-                console.info(resourceData)
             })
             .catch((err) => {
                 console.info(err)
@@ -67,16 +64,13 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
 
     editResource = (resource: object) => {
         this.setState({ resourceToEdit: resource })
-        console.info(resource)
     }
 
     updateOn = () => {
-        console.info(`In updateOn - updateActive is ${this.state.updateActive}`)
         this.setState({ updateActive: true })
     }
 
     updateOff = () => {
-        console.info(`In updateOff - updateActive is ${this.state.updateActive}`)
         this.setState({ updateActive: false })
     }
 
@@ -85,7 +79,6 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
     }
 
     filterCards = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.info('In ResourceIndex filterCards')
         const target = e.target
         const value = target.value.toLowerCase()
 
@@ -96,14 +89,11 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
     }
 
     render() {
-        console.info('In ResouceIndex')
         return (
-
             <BackgroundImg>
-                <Container fluid={true} className="resource-container">
-                {/* <Container className="themed-container" fluid={true}> */}
+                <Container fluid={true}>
                     <Row>
-                        <Col lg="4" className="create-col">
+                        <Col lg="4">
                             <ResourceCreate
                                 fetchResources={this.fetchResources}
                                 token={this.props.token}
@@ -111,7 +101,7 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
                         </Col>
                         <Col lg='8'>
                             <div>
-                                <Input className='search-box' placeholder="Search..." onChange={this.filterCards} />
+                                <Input placeholder="Search..." onChange={this.filterCards} />
 
                                 <ResourceCards
                                     resources={this.state.resources}
@@ -132,7 +122,6 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
                             )
                             : (<> </>)}
                     </Row>
-
                 </Container>
             </BackgroundImg>
         )

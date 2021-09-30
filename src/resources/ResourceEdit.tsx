@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Col, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, Row } from 'reactstrap';
 
-
 type Props = {
     token: string
     resourceToEdit: any
@@ -39,7 +38,6 @@ export default class ResourceEdit extends Component<Props, ResourceEditState> {
         const target = e.target
         const value = target.value
         const name = target.name
-        console.log(`In handleChange, value is ${value} for ${name}`)
         this.setState({ [name]: value } as unknown as Pick<
             ResourceEditState, keyof ResourceEditState
         >)
@@ -75,7 +73,6 @@ export default class ResourceEdit extends Component<Props, ResourceEditState> {
     }
 
     render() {
-        console.info('In ResourceEdit')
         return (
             <div className='modal'>
                 <Modal isOpen={true}>
@@ -119,7 +116,6 @@ export default class ResourceEdit extends Component<Props, ResourceEditState> {
                             </FormGroup>
                             <FormGroup row>
                                 <Label htmlFor='media'>Select Media:</Label>
-                                {/* ToDo: drop down arrow not showing. */}
                                 <Col sm={10}>
                                     <Input
                                         type='select'
@@ -139,7 +135,6 @@ export default class ResourceEdit extends Component<Props, ResourceEditState> {
                                 <Col md={5}>
                                     <FormGroup>
                                         <Label htmlFor='readStatus'>Select Status:</Label>
-
                                         <Input
                                             type='select'
                                             name='readStatus'
@@ -155,13 +150,13 @@ export default class ResourceEdit extends Component<Props, ResourceEditState> {
                                 <Col md={5}>
                                     <FormGroup>
                                         <Label htmlFor='rating'>Select Rating:</Label>
-                                        {/* ToDo: drop down arrow not showing. */}
                                         <Input
                                             type='select'
                                             name='rating'
                                             value={this.state.rating}
                                             onChange={this.handleChange}
                                         >
+                                            <option value="Not Rated">Not Rated</option>
                                             <option value="Meh">Meh</option>
                                             <option value="Good">Good</option>
                                             <option value="Excellent">Excellent</option>

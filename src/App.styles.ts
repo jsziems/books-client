@@ -1,18 +1,17 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
 
 
     body  {
-        // width: 100%;
         margin: 0;
         padding: 0;
         padding-top: 70px;
         display: flex;
         justify-content: center;
         text-align: center;
-        background-color: #033d68; //#a7b0b1;  //2F4454;
-        color: white; //#51958A; //#239023; // #269e26; // #238323 //#32cd32;
+        background-color: #033d68; 
+        color: white; 
     }
 
     h2 {
@@ -42,6 +41,12 @@ export const GlobalStyle = createGlobalStyle`
         width: 25%;
         color: black;
     }
+
+    .card-button {
+        font-size: 1rem;
+        margin: .2rem;
+
+    }
     
     .modal-header {
         background-color: #033d68;
@@ -59,6 +64,7 @@ export const GlobalStyle = createGlobalStyle`
 
     .label {
         display: flex;
+        color: #033d68;
     }
 
     `

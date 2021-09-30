@@ -2,7 +2,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Collapse, Nav, Navbar, NavbarBrand, NavLink, NavbarToggler, NavItem } from 'reactstrap'
-import logo from "../assets/Developer.jpg"
 
 type Props = {
     logout: () => void,
@@ -30,23 +29,21 @@ export default class Sitebar extends Component<Props, SitebarState>{
     render() {
         return (
             <div>
-                <Navbar className="sitebar fixed-top navbar-expand-lg" expand="lg">
-                {/* ToDo: Put logo on navbar.  Need to be resized first? */}
-                <NavbarBrand style={{color: "white"}} href="/">Developer Digest</NavbarBrand>
-                    {/* <NavbarBrand style={{color: "white"}} href="/">src={logo}</NavbarBrand> */}
-                    <NavbarToggler onClick={this.toggle} />
+                <Navbar className="fixed-top navbar-expand-md" dark expand="lg">
+                    <NavbarBrand style={{ color: "white" }} href="/">Developer Digest</NavbarBrand>
+                    <NavbarToggler className='mr-2' onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="mr-auto" navbar>
                             <NavItem>
-                                <NavLink  onClick={this.toggle}>
-                                    <Link style={{color: "white"}} to='/'>
+                                <NavLink onClick={this.toggle}>
+                                    <Link style={{ color: "white" }} to='/'>
                                         Home
                                     </Link>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
                                 <NavLink to='auth'>
-                                    <Link style={{color: "white"}} to='/Auth'>
+                                    <Link style={{ color: "white" }} to='/Auth'>
                                         Login
                                     </Link>
                                 </NavLink>
@@ -56,14 +53,14 @@ export default class Sitebar extends Component<Props, SitebarState>{
                                 <>
                                     <NavItem>
                                         <NavLink to='resourceIndex'>
-                                            <Link style={{color: "white"}}to='/ResourceIndex'>
+                                            <Link style={{ color: "white" }} to='/ResourceIndex'>
                                                 Show Resouces
                                             </Link>
                                         </NavLink>
                                     </NavItem>
                                     <NavItem>
                                         <NavLink to='logout'>
-                                            <Link style={{color: "white"}}to='/' onClick={this.props.logout}>
+                                            <Link style={{ color: "white" }} to='/' onClick={this.props.logout}>
                                                 Logout
                                             </Link>
                                         </NavLink>
@@ -75,9 +72,9 @@ export default class Sitebar extends Component<Props, SitebarState>{
 
                             {this.props.adminRole === "User Admin" ? (
                                 <>
-                                <NavItem>
+                                    <NavItem>
                                         <NavLink to='admin'>
-                                            <Link style={{color: "white"}} to='/Admin' >
+                                            <Link style={{ color: "white" }} to='/Admin' >
                                                 Admin
                                             </Link>
                                         </NavLink>
@@ -86,9 +83,7 @@ export default class Sitebar extends Component<Props, SitebarState>{
                             ) : (
                                 <></>
                             )}
-
                         </Nav>
-
                     </Collapse>
                 </Navbar>
             </div>

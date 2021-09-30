@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Form, FormGroup, Input, Label } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
 
 type SignupProps = {
@@ -38,12 +38,9 @@ export default class Signup extends Component<SignupProps, SignupState> {
         const name = target.name
         this.setState({ [name]: value } as unknown as
             Pick<SignupState, keyof SignupState>)
-
-        console.info(`In Signup:  handleChange value is ${value} for ${name}`)
     }
 
     handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
-        console.info('In Signup: handleSubmit')
         event.preventDefault()
         fetch('http://localhost:3000/user/signup', {
             method: 'POST',
@@ -63,7 +60,6 @@ export default class Signup extends Component<SignupProps, SignupState> {
                 this.props.updateToken(data.sessionToken)
                 this.props.updateRole(this.state.adminRole)
                 this.setState({ successfulLogin: true })
-                console.info(`In Signup handleSubmit, token is ${data.sessionToken} and admin role is ${this.state.adminRole}`)
             })
             .catch(err => {
                 console.error(err)
@@ -75,7 +71,6 @@ export default class Signup extends Component<SignupProps, SignupState> {
         return (
             <div>
                 <h2>Sign Up</h2>
-                {/* ToDo MIN LENGTH NOT WORKING */}
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                         <Label htmlFor='email'></Label>
@@ -114,8 +109,6 @@ export default class Signup extends Component<SignupProps, SignupState> {
                         >
                             <option value="None">None</option>
                             <option value="User Admin">Admin</option>
-                            
-                            
                         </Input>
                     </FormGroup>
                     <FormGroup>
@@ -146,7 +139,6 @@ export default class Signup extends Component<SignupProps, SignupState> {
                 {this.state.successfulLogin ?
                     <>
                         <Redirect push to='/ResourceIndex' />
-                        {/* <Redirect push to='/' /> */}
                     </>
                     : <></>}
             </div>

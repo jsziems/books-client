@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody } from 'reactstrap';
-import { User } from '../types'
 
 type Props = {
     token: string
@@ -36,8 +35,6 @@ export default class UserEdit extends Component<Props, UserEditState> {
     }
 
     handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        console.info('In UserEdit handleSubmit')
-        console.info(this.state.email)
         e.preventDefault()
         fetch(`http://localhost:3000/user/${this.props.userToEdit.id}`, {
             method: 'PUT',
@@ -61,7 +58,6 @@ export default class UserEdit extends Component<Props, UserEditState> {
     }
 
     render() {
-        console.info('In UserEdit')
         return (
             <div>
                 <Modal isOpen={true} onCancel={this.handleCancel}>
@@ -92,15 +88,6 @@ export default class UserEdit extends Component<Props, UserEditState> {
                             onChange={this.handleChange}
                         />
                         </FormGroup>
-                        {/* <FormGroup>
-                        <Label htmlFor='emailAddress'>Email:</Label>
-                        <Input 
-                        // ToDo: Add form validation for email address
-                            name='emailAddress'
-                            value={this.state.email}
-                            onChange={this.handleChange}
-                        />
-                        </FormGroup> */}
                         <Button type='submit'>Update</Button>
                         </Form>
                     </ModalBody>
