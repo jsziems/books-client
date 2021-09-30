@@ -43,6 +43,12 @@ To remove the resource from Developer Digest, select the Delete button for the r
 
 Users who have the User Admin role will have an 'Admin' option on the navbar.  Select this option to see a listing of the registered Developer Digest users.  Use the 'Update' option to change a user's email address or name.  Select the 'Delete' option to delete a user and their resources.
 
+## Downloading and running the client
+
+1. Download the code from the repository
+2. run <code>npm install</code>
+3. Use <code>npm start</code> to start the client.
+
 ## Credits
 * Book in lap:  Photo by <a href="https://unsplash.com/@joshapplegate?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Josh Applegate</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 * Open book on dark background:  Photo by <a href="https://unsplash.com/@qmikola?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mikołaj</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
