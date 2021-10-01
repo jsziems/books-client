@@ -6,6 +6,7 @@ import { Resource } from '../types'
 import ResourceCards from './ResourceCards'
 import ResourceCreate from './ResourceCreate'
 import ResourceEdit from './ResourceEdit'
+import APIURL from '../helpers/environment'
 
 import styled from 'styled-components'
 import bookStack from '../assets/bookStack.jpg'
@@ -45,7 +46,8 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
     }
 
     fetchResources = () => {
-        fetch('http://localhost:3000/book', {
+        // fetch('http://localhost:3000/book', {
+        fetch(`${APIURL}/book`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',

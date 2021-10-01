@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Col, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, Row } from 'reactstrap';
+import APIURL from '../helpers/environment'
 
 type Props = {
     token: string
@@ -45,7 +46,8 @@ export default class ResourceEdit extends Component<Props, ResourceEditState> {
 
     handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        fetch(`http://localhost:3000/book/${this.props.resourceToEdit.id}`, {
+        // fetch(`http://localhost:3000/book/${this.props.resourceToEdit.id}`, {
+        fetch(`${APIURL}/book/${this.props.resourceToEdit.id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 title: this.state.title,

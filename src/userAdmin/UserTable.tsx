@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Alert, Button, Table } from 'reactstrap'
-
+import APIURL from '../helpers/environment'
 import { User } from '../types'
 
 type Props = {
@@ -14,7 +14,8 @@ type Props = {
 export default class UserTable extends Component<Props, {}> {
 
     deleteUser = (user: User) => {
-        fetch(`http://localhost:3000/user/${user.id}`, {
+        // fetch(`http://localhost:3000/user/${user.id}`, {
+        fetch(`${APIURL}/user/${user.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',

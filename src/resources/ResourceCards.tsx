@@ -5,6 +5,7 @@ import '../App.styles'
 
 import bookClub from '../assets/bookClub.jpg'
 import { Resource } from '../types'
+import APIURL from '../helpers/environment'
 
 type Props = {
     resources: Resource[]
@@ -17,7 +18,8 @@ type Props = {
 export default class ResourceCards extends Component<Props, {}> {
 
     deleteResource = (resource: Resource ) => {
-        fetch(`http://localhost:3000/book/${resource.id}`, {
+        // fetch(`http://localhost:3000/book/${resource.id}`, {
+        fetch(`${APIURL}/book/${resource.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',

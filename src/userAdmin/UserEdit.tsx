@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import APIURL from '../helpers/environment'
 
 type Props = {
     token: string
@@ -36,7 +37,8 @@ export default class UserEdit extends Component<Props, UserEditState> {
 
     handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        fetch(`http://localhost:3000/user/${this.props.userToEdit.id}`, {
+        // fetch(`http://localhost:3000/user/${this.props.userToEdit.id}`, {
+        fetch(`${APIURL}/user/${this.props.userToEdit.id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 firstName: this.state.firstName,

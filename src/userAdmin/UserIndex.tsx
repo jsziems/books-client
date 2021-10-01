@@ -4,7 +4,7 @@ import { Col, Container, Row } from 'reactstrap'
 import { User } from '../types'
 import UserEdit from './UserEdit'
 import UserTable from './UserTable'
-
+import APIURL from '../helpers/environment'
 import styled from 'styled-components'
 
 const Background = styled.div`
@@ -39,7 +39,8 @@ export default class Admin extends Component<UserIndexProps, UserIndexState> {
     }
 
     fetchUsers = () => {
-        fetch('http://localhost:3000/user', {
+        // fetch('http://localhost:3000/user', {
+        fetch(`${APIURL}/user`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
