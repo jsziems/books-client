@@ -10,11 +10,12 @@ import APIURL from '../helpers/environment'
 
 import styled from 'styled-components'
 import bookStack from '../assets/bookStack.jpg'
-import magazine from '../assets/magazine.jpg'
+import bookClub from '../assets/bookClub.jpg'
+// import magazine from '../assets/magazine.jpg'
 
 const BackgroundImg = styled.div`
     // background-image: url(${bookStack});
-    background-image: url(${magazine});
+    background-image: url(${bookClub});
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
