@@ -12,7 +12,7 @@ import styled from 'styled-components'
 import bookStack from '../assets/bookStack.jpg'
 
 const BackgroundImg = styled.div`
-    // background-image: url(${bookStack});
+    background-image: url(${bookStack});
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
