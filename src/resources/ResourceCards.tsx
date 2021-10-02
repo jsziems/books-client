@@ -4,7 +4,7 @@ import { Button, Card, CardBody, CardImg, CardLink, CardTitle } from 'reactstrap
 import '../App.styles'
 
 import bookClub from '../assets/bookClub.jpg'
-import magazine from '../assets/magazine.jpg'
+import openMagazine from '../assets/openMagazine.jpg'
 import headphones from '../assets/headphones.jpg'
 import video from '../assets/video.jpg'
 import book from '../assets/book.jpg'
@@ -48,7 +48,7 @@ export default class ResourceCards extends Component<Props, {}> {
                                         </>
                                     ) : resource.media === 'Article' ? (
                                         <>
-                                            <CardImg variant="top" src={magazine}/> 
+                                            <CardImg variant="top" src={openMagazine}/> 
                                         </>
                                     ) :  resource.media === 'Video' ? (
                                         <>
