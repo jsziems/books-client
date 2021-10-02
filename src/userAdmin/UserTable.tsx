@@ -14,7 +14,6 @@ type Props = {
 export default class UserTable extends Component<Props, {}> {
 
     deleteUser = (user: User) => {
-        // fetch(`http://localhost:3000/user/${user.id}`, {
         fetch(`${APIURL}/user/${user.id}`, {
             method: 'DELETE',
             headers: new Headers({
@@ -40,7 +39,6 @@ export default class UserTable extends Component<Props, {}> {
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Role</th>
-                            <th>Date Created</th>
                             <th>Last Updated</th>
                         </tr>
                     </thead>
@@ -53,7 +51,6 @@ export default class UserTable extends Component<Props, {}> {
                                     <td>{oneUser.firstName}</td>
                                     <td>{oneUser.lastName}</td>
                                     <td>{oneUser.adminRole}</td>
-                                    <td>{oneUser.createdAt}</td>
                                     <td>{oneUser.updatedAt}</td>
                                     <td>
                                         <Button onClick={() => {

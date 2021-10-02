@@ -17,7 +17,6 @@ const BackgroundImg = styled.div`
     align-items: center;
 `
 const WelcomeBrand = styled.h1`
-    // margin-top: 3rem;
     margin-bottom: 2rem;
     font-size: 5rem;
 `

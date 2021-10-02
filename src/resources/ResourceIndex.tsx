@@ -9,10 +9,8 @@ import ResourceEdit from './ResourceEdit'
 import APIURL from '../helpers/environment'
 
 import styled from 'styled-components'
-import bookStack from '../assets/bookStack.jpg'
 
 const BackgroundImg = styled.div`
-    background-image: url(${bookStack});
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
@@ -46,7 +44,6 @@ export default class ResourceIndex extends Component<Props, ResourceIndexState> 
     }
 
     fetchResources = () => {
-        // fetch('http://localhost:3000/book', {
         fetch(`${APIURL}/book`, {
             method: 'GET',
             headers: new Headers({

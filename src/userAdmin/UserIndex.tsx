@@ -39,7 +39,6 @@ export default class Admin extends Component<UserIndexProps, UserIndexState> {
     }
 
     fetchUsers = () => {
-        // fetch('http://localhost:3000/user', {
         fetch(`${APIURL}/user`, {
             method: 'GET',
             headers: new Headers({

@@ -43,7 +43,6 @@ export default class Signup extends Component<SignupProps, SignupState> {
 
     handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault()
-        // fetch('http://localhost:3000/user/signup', {
             fetch(`${APIURL}/user/signup`, {
             method: 'POST',
             body: JSON.stringify({

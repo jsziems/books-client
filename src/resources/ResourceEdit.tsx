@@ -46,7 +46,6 @@ export default class ResourceEdit extends Component<Props, ResourceEditState> {
 
     handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        // fetch(`http://localhost:3000/book/${this.props.resourceToEdit.id}`, {
         fetch(`${APIURL}/book/${this.props.resourceToEdit.id}`, {
             method: 'PUT',
             body: JSON.stringify({

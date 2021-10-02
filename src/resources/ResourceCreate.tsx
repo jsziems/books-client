@@ -45,7 +45,6 @@ export default class ResourceCreate extends Component<Props, ResourceCreateState
 
     handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault()
-        // fetch('http://localhost:3000/book/create', {
         fetch(`${APIURL}/book/create`, {
             method: 'POST',
             body: JSON.stringify({

@@ -19,7 +19,20 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     h4 {
-        color: #033d68;
+        color: #7A8791;
+    }
+
+    .nb-brand {
+        color: white;
+        font-size: 1.5rem;
+        padding-right: 5rem;
+        text-decoration: none;
+    }
+
+    .nb-link {
+        color: white;
+        text-decoration: none;
+        font-size: 1.2rem;
     }
 
     button {
@@ -46,6 +59,10 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 1rem;
         margin: .2rem;
 
+    }
+
+    .card-body {
+        padding: .4rem;
     }
     
     .modal-header {

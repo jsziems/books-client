@@ -1,7 +1,7 @@
 # Developer Digest
 
 ## Deployed Project:
-This app can be found on heroku at ????????
+This app can be found on heroku at <a href="https://jz-dev-digest-client.herokuapp.com/">https://jz-dev-digest-client.herokuapp.com/</a>
 
 ## About Developer Digest
 This is the client for a full CRUD  implementation (server's repository <a href="https://github.com/jsziems/books-server">here</a>).  The application allows developers to track materials they want to read, watch or listen to.  It also allows them to rate the material and provide a summary for future reference.
@@ -53,7 +53,17 @@ Users who have the User Admin role will have an 'Admin' option on the navbar.  S
 * Book in lap:  Photo by <a href="https://unsplash.com/@joshapplegate?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Josh Applegate</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 * Open book on dark background:  Photo by <a href="https://unsplash.com/@qmikola?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mikołaj</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
 * Reading book at table:  Photo by <a href="https://unsplash.com/@alexisrbrown?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Alexis Brown</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-* Stack of books: Photo by <a href="https://unsplash.com/@priscilladupreez?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Priscilla Du Preez</a> on <a href="https://unsplash.com/s/photos/stack-of-books?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+* Github figure: Photo by <a href="https://unsplash.com/@synkevych?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Roman Synkevych</a> on <a href="https://unsplash.com/s/photos/github?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+* Headphones: Photo by <a href="https://unsplash.com/@synkevych?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Roman Synkevych</a> on <a href="https://unsplash.com/s/photos/github?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+* Magazine:  Photo by <a href="https://unsplash.com/@austindistel?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Austin Distel</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+* Stack of books: Photo by <a href="https://unsplash.com/@kaimantha?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Claudia Wolff</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+* Youtube: Photo by <a href="https://unsplash.com/@christianw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Christian Wiediger</a> on <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
+
+
+  
+
+  
   
   
 
